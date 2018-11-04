@@ -5,6 +5,9 @@
     <Authors>HTO3</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company />
+    <PackageProjectUrl>https://github.com/HTO3/Hto3.StringHelpers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HTO3/Hto3.StringHelpers</RepositoryUrl>
+    <PackageTags>String manipulation helpers</PackageTags>
   </PropertyGroup>
 
 </Project>
