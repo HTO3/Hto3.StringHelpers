@@ -49,9 +49,9 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Extract some characters from right to left
         /// </summary>
-        /// <param name="text">O texto a ser usado para extrair</param>
-        /// <param name="length">Quantidade de caracteres que serão extraidos da direita para a esquerda</param>
-        /// <param name="useThreeDots">Se verdadeiro, três pontos "..." serão adicionados no começo dos caracteres extraídos se o <i>tamanho</i> for menor do que a quantidade de caracteres do <i>texto</i>, resultando então no final o comprimento de 3 + <i>tamanho</i></param>
+        /// <param name="text">The original text</param>
+        /// <param name="length">Amount of characters to extract</param>
+        /// <param name="useThreeDots">If true, three dots "..." will be added at the begining of the extracted characters</param>
         /// <returns></returns>
         /// <remarks></remarks>
         public static String Right(this String text, Int32 length, Boolean useThreeDots = false)
@@ -76,8 +76,8 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Reverse the characters sequence
         /// </summary>
-        /// <param name="text">O texto a ser usado para inverter</param>
-        /// <returns>O texto inverso</returns>
+        /// <param name="text">The original text</param>
+        /// <returns></returns>
         /// <remarks></remarks>
         public static String Reverse(this String text)
         {
@@ -94,9 +94,9 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Extract some characters from left to right
         /// </summary>
-        /// <param name="text">O texto a ser usado para extrair</param>
-        /// <param name="length">Quantidade de caracteres que serão extraidos da esquerda para a direita</param>
-        /// <param name="useThreeDots">Se verdadeiro, três pontos "..." serão adicionados no final dos caracteres extraídos se o <i>tamanho</i> for menor do que a quantidade de caracteres do <i>texto</i>, resultando então no final o comprimento de <i>tamanho</i> + 3</param>
+        /// <param name="text">The original text</param>
+        /// <param name="length">Amount of characters to extract</param>
+        /// <param name="useThreeDots">If true, three dots "..." will be added at the end of the extracted characters</param>
         /// <returns></returns>
         /// <remarks></remarks>
         public static String Left(this String text, Int32 length, Boolean useThreeDots = false)
@@ -121,9 +121,9 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Replace a text with another one ignoring case
         /// </summary>
-        /// <param name="input">O texto completo</param>
-        /// <param name="textoVelho">O texto velho que vai ser substituído</param>
-        /// <param name="newText">O novo texto que vai entrar no lugar do velho</param>
+        /// <param name="input">The original text</param>
+        /// <param name="oldText">The old text</param>
+        /// <param name="newText">The new text</param>
         /// <returns></returns>
         public static String ReplaceIgnoringCase(this String input, String oldText, String newText)
         {
@@ -148,10 +148,10 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Replace whole word
         /// </summary>
-        /// <param name="input">O texto completo</param>
-        /// <param name="oldText">A palavra que vai ser substituída</param>
-        /// <param name="newText">A nova palavra que vai entrar no lugar</param>
-        /// <param name="ignoreCase">Ignorar case?</param>
+        /// <param name="input">The original text</param>
+        /// <param name="oldText">The old word</param>
+        /// <param name="newText">The new word</param>
+        /// <param name="ignoreCase">if true, ignoring case</param>
         /// <returns></returns>
         public static String ReplaceWholeWord(this String input, String oldText, String newText, Boolean ignoreCase = false)
         {
@@ -176,7 +176,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Tries to get the first name of a full name
         /// </summary>
-        /// <param name="fullName">O nome completo de uma pessoa</param>
+        /// <param name="fullName">The full name of a person</param>
         /// <returns></returns>
         public static Boolean TryGetFirstName(this String fullName, out String firstName)
         {
@@ -198,7 +198,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Tries to get the last name of a full name
         /// </summary>
-        /// <param name="fullName">O nome completo de uma pessoa</param>
+        /// <param name="fullName">The full name of a person</param>
         /// <returns></returns>
         public static Boolean TryGetLastName(this String fullName, out String lastName)
         {
@@ -220,7 +220,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Tries to exclude the first name of a full name and return the middle and the last name
         /// </summary>
-        /// <param name="name">O nome completo de uma pessoa</param>
+        /// <param name="name">The full name of a person</param>
         /// <returns></returns>
         public static String TryGetExceptFirstName(this String name)
         {
@@ -238,7 +238,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Format a brazilian CPF
         /// </summary>
-        /// <param name="cpf">String de exatamente 11 caracteres sem formatação</param>
+        /// <param name="cpf">A CPF with ou without formatting</param>
         /// <returns></returns>
         public static String FormatCPF(this String cpf)
         {
@@ -255,7 +255,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Format a brazilian CNPJ
         /// </summary>
-        /// <param name="cnpj">String de exatamente 14 caracteres sem formatação</param>
+        /// <param name="cnpj">A CNPJ with or without formatting</param>
         /// <returns></returns>
         public static String FormatCNPJ(this String cnpj)
         {
@@ -272,8 +272,8 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Format a brazilian zip code
         /// </summary>
-        /// <param name="cep">CEP brasileiro</param>
-        /// <returns>O CEP formatado "00000-000"</returns>
+        /// <param name="cep">A brazilian CEP with or without formatting</param>
+        /// <returns></returns>
         public static String FormatCEP(String cep)
         {
             if (String.IsNullOrEmpty(cep))
@@ -291,8 +291,8 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Verify if a text is a number
         /// </summary>
-        /// <param name="text">O texto a ser testado</param>
-        /// <param name="onlyIntegerNumbers">Se verdadeiro, o texto é comparado somente para com um número inteiro.</param>
+        /// <param name="text">The text that will be tested</param>
+        /// <param name="onlyIntegerNumbers">If true, the text will be tested to be an integer (decimal part MUST not exist)</param>
         /// <returns></returns>
         public static Boolean IsNumber(this String text, Boolean onlyIntegerNumbers = false)
         {
@@ -309,9 +309,9 @@ namespace Hto3.StringHelpers
             }
         }
         /// <summary>
-        /// Remove all special characters from a text
+        /// Remove all non-ASCII characters from a text
         /// </summary>
-        /// <param name="text">Texto a remover os caracteres especiais</param>
+        /// <param name="text">The original text</param>
         /// <returns></returns>
         public static String RemoveNonASCIICharacters(this String text)
         {
@@ -323,49 +323,49 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Remove accents replacing the character with the equivalent without accent
         /// </summary>
-        /// <param name="text">Texto com acento a ser processado</param>
+        /// <param name="text">The original text</param>
         /// <returns></returns>
         public static String RemoveAccents(this String text)
         {
             if (String.IsNullOrEmpty(text))
                 return text;
 
-            String s = text.Normalize(NormalizationForm.FormD);
+            var s = text.Normalize(NormalizationForm.FormD);
 
-            StringBuilder retorno = new StringBuilder(s.Length);
+            var retorno = new StringBuilder(s.Length);
 
-            for (Int32 k = 0; k < s.Length; k++)
+            for (var k = 0; k < s.Length; k++)
                 if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(s[k]) != System.Globalization.UnicodeCategory.NonSpacingMark)
                     retorno.Append(s[k]);
 
             return retorno.ToString();
         }
         /// <summary>
-        /// Replace only the first occurrence
+        /// Returns a new string in which only the first occurrence of a specified string in the current instance are replaced with another specified string.
         /// </summary>
-        /// <param name="originalText">Texto original</param>
-        /// <param name="searchFor">Texto a procurar (que será substituído)</param>
-        /// <param name="replaceBy">O texto a ser colocado no lugar</param>
+        /// <param name="originalText">The original text</param>
+        /// <param name="oldValue">The text to looking for</param>
+        /// <param name="newValue">The text to replace</param>
         /// <returns></returns>
-        public static String ReplaceFirstOccurrence(this String originalText, String searchFor, String replaceBy)
+        public static String ReplaceFirstOccurrence(this String originalText, String oldValue, String newValue)
         {
-            if (searchFor == null)
-                throw new ArgumentNullException(nameof(searchFor));
-            if (replaceBy == null)
-                throw new ArgumentNullException(nameof(replaceBy));
+            if (oldValue == null)
+                throw new ArgumentNullException(nameof(oldValue));
+            if (newValue == null)
+                throw new ArgumentNullException(nameof(newValue));
             if (String.IsNullOrEmpty(originalText))
                 return originalText;
 
-            var pos = originalText.IndexOf(searchFor);
+            var pos = originalText.IndexOf(oldValue);
             if (pos < 0)
                 return originalText;
-            return originalText.Substring(0, pos) + replaceBy + originalText.Substring(pos + searchFor.Length);
+            return originalText.Substring(0, pos) + newValue + originalText.Substring(pos + oldValue.Length);
         }
         /// <summary>
         /// Center a text inside a fixed length using space characters ' '
         /// </summary>
-        /// <param name="text">Texto a formatar</param>
-        /// <param name="totalLength">Número de posições total de largura</param>
+        /// <param name="text">Text to format</param>
+        /// <param name="totalLength">Total length</param>
         /// <returns></returns>
         public static String CenterAlignText(String text, Int32 totalLength)
         {
