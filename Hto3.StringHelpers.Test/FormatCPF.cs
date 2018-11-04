@@ -1,0 +1,24 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hto3.StringHelpers.Test
+{
+    [TestClass]
+    public class FormatCPF
+    {
+        [TestMethod]
+        public void NormalUse()
+        {
+            Assert.AreEqual(Helpers.FormatCPF("11111111111"), "111.111.111-11");
+            Assert.AreEqual(Helpers.FormatCPF("111111111ab"), null);
+            Assert.AreEqual(Helpers.FormatCPF("11111"), null);
+            Assert.AreEqual(Helpers.FormatCPF("111.111.111-11"), "111.111.111-11");
+            Assert.AreEqual(Helpers.FormatCPF(""), null);
+            Assert.AreEqual(Helpers.FormatCEP(null), null);
+        }
+    }
+}
