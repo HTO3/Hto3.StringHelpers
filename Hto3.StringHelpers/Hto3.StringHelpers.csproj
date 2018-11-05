@@ -8,6 +8,7 @@
     <PackageProjectUrl>https://github.com/HTO3/Hto3.StringHelpers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HTO3/Hto3.StringHelpers</RepositoryUrl>
     <PackageTags>String manipulation helpers</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/HTO3/Hto3.StringHelpers/master/nuget-logo.png</PackageIconUrl>
   </PropertyGroup>
 
 </Project>
