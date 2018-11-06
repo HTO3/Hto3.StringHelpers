@@ -49,22 +49,33 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppendMissing.cs" />
     <Compile Include="CenterAlignText.cs" />
+    <Compile Include="Coalesce.cs" />
     <Compile Include="ExceptNumbers.cs" />
     <Compile Include="FormatCEP.cs" />
     <Compile Include="FormatCNPJ.cs" />
     <Compile Include="FormatCPF.cs" />
+    <Compile Include="IsAlphanumeric.cs" />
     <Compile Include="IsNumber.cs" />
     <Compile Include="Left.cs" />
+    <Compile Include="NullIf.cs" />
     <Compile Include="NumbersOnly.cs" />
+    <Compile Include="PrependMissing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomString.cs" />
     <Compile Include="RemoveAccents.cs" />
+    <Compile Include="RemoveCharactersAtBegining.cs" />
+    <Compile Include="RemoveCharactersAtEnd.cs" />
+    <Compile Include="RemoveLineBreaks.cs" />
     <Compile Include="RemoveNonASCIICharacters.cs" />
+    <Compile Include="RemoveSpaces.cs" />
     <Compile Include="ReplaceFirstOccurrence.cs" />
     <Compile Include="ReplaceIgnoringCase.cs" />
     <Compile Include="ReplaceWholeWord.cs" />
     <Compile Include="Reverse.cs" />
     <Compile Include="Right.cs" />
+    <Compile Include="ToAlphanumeric.cs" />
     <Compile Include="TryGetExceptFirstName.cs" />
     <Compile Include="TryGetFirstName.cs" />
     <Compile Include="TryGetLastName.cs" />

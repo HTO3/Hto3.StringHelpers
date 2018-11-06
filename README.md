@@ -7,6 +7,78 @@ Features
 --------
 A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.
 
+### RemoveCharactersAtBegining
+
+```csharp
+"Apple".RemoveCharactersAtBegining(1) == "pple";
+```
+
+### RemoveCharactersAtEnd
+
+```csharp
+"Apple".RemoveCharactersAtEnd(1) == "Appl";
+```
+
+### RemoveSpaces
+
+```csharp
+"Five steps to complish".RemoveSpaces() == "Fivestepstocomplish";
+```
+
+### RemoveLineBreaks
+
+```csharp
+"Line\r\nbreaks\r\nare\r\ngreat!".RemoveLineBreaks() == "Linebreaksaregreat!";
+```
+
+### PrependMissing
+
+```csharp
+@":\Program Files (x86)\Java".PrependMissing("C") == @"C:\Program Files (x86)\Java";
+```
+
+### AppendMissing
+
+```csharp
+@"C:\Program Files (x86)\Java".AppendMissing("\"") == @"C:\Program Files (x86)\Java\";
+```
+
+### NullIf
+
+```csharp
+"0".NullIf("0") == null;
+```
+
+### Coalesce
+
+```csharp
+Helpers.Coalesce(null, null, "123", "abc") == "123";
+```
+
+### RandomString
+
+```csharp
+Helpers.RandomString(8) == "a84583fc";
+```
+
+### IsAlphanumeric
+
+```csharp
+"azAZ09".IsAlphanumeric() == true;
+```
+
+### ToAlphanumeric
+
+```csharp
+"[a-z|A-Z|0-9]".IsAlphanumeric() == "azAZ09";
+```
+
+### ToCsvSafe
+
+```csharp
+" Cave rats,\r\ngiant cats!".IsAlphanumeric() == "\" Cave rats,\r\ngiant cats!\"";
+```
+
 ### NumbersOnly
 
 ```csharp
@@ -40,19 +112,19 @@ A set of extension methods that can be used to facilitate the manipulation of st
 ### ReplaceIgnoringCase
 
 ```csharp
-"O ônIbUs já chegou".ReplaceIgnoringCase("Ônibus", "ubber") == "O ubber já chegou";
+"The ReCiPe of madness".ReplaceIgnoringCase("recipe", "master") == "The master of madness";
 ```
 
 ### ReplaceWholeWord
 
 ```csharp
-"O rato roeu a roupa".ReplaceWholeWord("roeu", "comeu") == "O rato comeu a roupa";
+"So far so good".ReplaceWholeWord("far", "long") == "So long so good";
 ```
 
 ### ReplaceFirstOccurrence
 
 ```csharp
-"Carro carro carro carro".ReplaceFirstOccurrence("carro", "ônibus") == "Carro ônibus carro carro";
+"Car car car car".ReplaceFirstOccurrence("car", "bus") == "Car bus car car";
 ```
 
 ### TryGetFirstName

@@ -8,7 +8,7 @@ namespace Hto3.StringHelpers
     {
         private static readonly Regex _notAlphaNumericRegex = new Regex("[^a-zA-Z0-9]", RegexOptions.Compiled);
         /// <summary>
-        /// 
+        /// Remove a specified amout of characters at the begining of string
         /// </summary>
         /// <param name="text"></param>
         /// <param name="amount"></param>
@@ -23,7 +23,7 @@ namespace Hto3.StringHelpers
             return text.Substring(amount);
         }
         /// <summary>
-        /// 
+        /// Remove a specified amout of characters at the end of string
         /// </summary>
         /// <param name="text"></param>
         /// <param name="amount"></param>
@@ -38,19 +38,19 @@ namespace Hto3.StringHelpers
             return text.Remove(text.Length - amount);
         }
         /// <summary>
-        /// 
+        /// Remove all spaces ' '
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
         public static String RemoveSpaces(this String text)
         {
-            if (text == null)
+            if (String.IsNullOrEmpty(text))
                 return text;
 
             return text.Replace(" ", String.Empty);
         }
         /// <summary>
-        /// 
+        /// Remove all line breaks
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -62,33 +62,43 @@ namespace Hto3.StringHelpers
             return text.Replace("\r", String.Empty).Replace("\n", String.Empty);
         }
         /// <summary>
-        /// 
+        /// If the text does not start with a especified text, then this specified text will be added to the string
         /// </summary>
         /// <param name="text"></param>
         /// <param name="shouldStartWith"></param>
         /// <returns></returns>
         public static String PrependMissing(this String text, String shouldStartWith)
         {
+            if (String.IsNullOrEmpty(shouldStartWith))
+                throw new ArgumentException("The parameter 'shouldStartWith' cannot be empty!");
+
+            text = text ?? String.Empty;
+
             if (!text.StartsWith(shouldStartWith, StringComparison.CurrentCulture))
                 text = shouldStartWith + text;
 
             return text;
         }
         /// <summary>
-        /// 
+        /// If the text does not end with a especified text, then this specified text will be added to the string
         /// </summary>
         /// <param name="text"></param>
         /// <param name="shouldEndWith"></param>
         /// <returns></returns>
         public static String AppendMissing(this String text, String shouldEndWith)
         {
+            if (String.IsNullOrEmpty(shouldEndWith))
+                throw new ArgumentException("The parameter 'shouldEndWith' cannot be empty!");
+
+            text = text ?? String.Empty;
+
             if (!text.EndsWith(shouldEndWith, StringComparison.CurrentCulture))
                 text = text + shouldEndWith;
 
             return text;
         }
         /// <summary>
-        /// 
+        /// If the text is equal to a specified value, then return null.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value"></param>
@@ -101,7 +111,7 @@ namespace Hto3.StringHelpers
                 return text;
         }
         /// <summary>
-        /// 
+        /// Return the first non-null value
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
@@ -116,7 +126,7 @@ namespace Hto3.StringHelpers
             return null;
         }
         /// <summary>
-        /// 
+        /// Generate a ramdom string containing letters and numbers
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>
@@ -137,49 +147,12 @@ namespace Hto3.StringHelpers
 
             return builder.ToString();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="length"></param>
-        /// <returns></returns>
-        public static String FileSizeString(long length)
-        {
-            long num1 = 1024;
-            long num2 = num1 * 1024L;
-            long num3 = num2 * 1024L;
-            long num4 = num3 * 1024L;
-            double num5 = (double)length;
-            String str = "B";
-            if (length >= num4)
-            {
-                num5 = Math.Round((double)length / (double)num4, 2);
-                str = "TB";
-            }
-            else if (length >= num3)
-            {
-                num5 = Math.Round((double)length / (double)num3, 2);
-                str = "GB";
-            }
-            else if (length >= num2)
-            {
-                num5 = Math.Round((double)length / (double)num2, 2);
-                str = "MB";
-            }
-            else if (length >= num1)
-            {
-                num5 = Math.Round((double)length / (double)num1, 2);
-                str = "KB";
-            }
-            return String.Format("{0} {1}", num5, str);
-        }
 
         /// <summary>
-        /// Determines if a string is alpha numeric.
+        /// Verify if a text is alpha numeric.
         /// </summary>
         /// <param name="text">The string to evaluate.</param>
-        /// <returns>
-        /// Returns true if the string is alpha-numeric, false if not.
-        /// </returns>
+        /// <returns></returns>
         public static Boolean IsAlphanumeric(this String text)
         {
             if (String.IsNullOrEmpty(text))
@@ -190,55 +163,38 @@ namespace Hto3.StringHelpers
         }
 
         /// <summary>
-        /// Converts the specified string to an alpha-numeric string
-        /// by removing all non-alpha-numeric characters.
+        /// Converts the specified text to an alpha-numeric string by removing all non-alpha-numeric characters.
         /// </summary>
         /// <param name="value">The string to convert.</param>
-        /// <remarks>
-        /// An empty string ("") is considered alpha-numeric.
-        /// </remarks>
-        /// <returns>
-        /// The specified string with all non-alpha-numeric characters removed.
-        /// </returns>
-        public static string ToAlphanumeric(this string value)
+        /// <returns></returns>
+        public static String ToAlphanumeric(this String value)
         {
             var result = _notAlphaNumericRegex.Replace(value, String.Empty);
             return result;
         }
 
         /// <summary>
-        /// Makes a string safe to insert as a value into a
-        /// comma separated values (CSV) object such as a file.
+        /// Makes a string safe to to be used in a CSV file by including double quotes when needed.
         /// </summary>
-        /// <remarks>
-        /// Here are the rules for making a string CSV safe:
-        /// <a href="http://en.wikipedia.org/wiki/Comma-separated_values" />.
-        /// </remarks>
-        /// <param name="value">The string to make safe.</param>
-        /// <returns>
-        /// Returns a string that is safe to insert into a CSV object.
-        /// </returns>
-        public static String ToCsvSafe(this string value)
+        /// <param name="value">The string to make safe</param>
+        /// <returns></returns>
+        public static String ToCsvSafe(this String value)
         {
             if (String.IsNullOrEmpty(value))
                 return value;
 
             var containsCommas = value.Contains(",");
             var containsDoubleQuotes = value.Contains("\"");
-            var containsLineBreak = value.Contains(Environment.NewLine);
-            containsLineBreak = containsLineBreak || value.Contains("\n");
+            var containsLineBreak = value.Contains("\n");
             var hasLeadingSpace = value[0] == ' ';
             var hasTrailingSpace = value[value.Length - 1] == ' ';
+            var containsSemicolon = value.Contains(";");
 
             if (containsDoubleQuotes)
-            {
                 value = value.Replace("\"", "\"\"");
-            }
 
-            if (containsCommas || containsDoubleQuotes || containsLineBreak || hasLeadingSpace || hasTrailingSpace)
-            {
+            if (containsCommas || containsSemicolon || containsDoubleQuotes || containsLineBreak || hasLeadingSpace || hasTrailingSpace)
                 value = "\"" + value + "\"";
-            }
 
             return value;
         }
@@ -471,7 +427,6 @@ namespace Hto3.StringHelpers
             else
                 return name.Substring(name.IndexOf(" ") + 1);
         }
-
         /// <summary>
         /// Format a brazilian CPF
         /// </summary>
@@ -611,14 +566,14 @@ namespace Hto3.StringHelpers
 
             text = text ?? String.Empty;
 
-            String textoFormatado;
+            var formatedText = default(String);
             if (text.Length > totalLength)
-                textoFormatado = text.Substring(0, totalLength);
+                formatedText = text.Substring(0, totalLength);
             else
-                textoFormatado = text;
-            int tamanho = (totalLength - textoFormatado.Trim().Length) / 2;
-            int ePar = (totalLength - textoFormatado.Trim().Length) % 2;
-            return new String(' ', tamanho) + textoFormatado + new String(' ', ePar == 0 || tamanho == 0 ? tamanho : tamanho - 1);
+                formatedText = text;
+            var size = (totalLength - formatedText.Trim().Length) / 2;
+            var isEven = (totalLength - formatedText.Trim().Length) % 2;
+            return new String(' ', size) + formatedText + new String(' ', isEven == 0 || size == 0 ? size : size - 1);
         }
     }
 }
