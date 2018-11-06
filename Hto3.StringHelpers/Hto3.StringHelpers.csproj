@@ -11,36 +11,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/HTO3/Hto3.StringHelpers/master/nuget-logo.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/HTO3/Hto3.StringHelpers/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>MIT</Copyright>
-    <Description>A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.
-
-RemoveCharactersAtBegining
-RemoveCharactersAtEnd
-RemoveSpaces
-RemoveLineBreaks
-PrependMissing
-AppendMissing
-NullIf
-Coalesce
-RandomString
-IsAlphanumeric
-ToAlphanumeric
-ToCsvSafe
-NumbersOnly
-ExceptNumbers
-Right
-Left
-Reverse
-ReplaceIgnoringCase
-ReplaceWholeWord
-ReplaceFirstOccurrence
-TryGetFirstName
-TryGetLastName
-TryGetExceptFirstName
-IsNumber
-RemoveNonASCIICharacters
-RemoveAccents
-...
-and more!</Description>
+    <Description>A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
