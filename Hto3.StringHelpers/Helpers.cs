@@ -6,6 +6,243 @@ namespace Hto3.StringHelpers
 {
     public static class Helpers
     {
+        private static readonly Regex _notAlphaNumericRegex = new Regex("[^a-zA-Z0-9]", RegexOptions.Compiled);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static String RemoveCharactersAtBegining(this String text, Int32 amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
+            if (String.IsNullOrEmpty(text))
+                return text;
+
+            return text.Substring(amount);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static String RemoveCharactersAtEnd(this String text, Int32 amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
+            if (String.IsNullOrEmpty(text))
+                return text;
+
+            return text.Remove(text.Length - amount);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static String RemoveSpaces(this String text)
+        {
+            if (text == null)
+                return text;
+
+            return text.Replace(" ", String.Empty);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static String RemoveLineBreaks(this String text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return text;
+
+            return text.Replace("\r", String.Empty).Replace("\n", String.Empty);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="shouldStartWith"></param>
+        /// <returns></returns>
+        public static String PrependMissing(this String text, String shouldStartWith)
+        {
+            if (!text.StartsWith(shouldStartWith, StringComparison.CurrentCulture))
+                text = shouldStartWith + text;
+
+            return text;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="shouldEndWith"></param>
+        /// <returns></returns>
+        public static String AppendMissing(this String text, String shouldEndWith)
+        {
+            if (!text.EndsWith(shouldEndWith, StringComparison.CurrentCulture))
+                text = text + shouldEndWith;
+
+            return text;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static String NullIf(this String text, String value)
+        {
+            if (text == value)
+                return null;
+            else
+                return text;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static String Coalesce(params String[] values)
+        {
+            for (var i = 0; i < values.Length; i++)
+            {
+                if (values[i] != null)
+                    return values[i];
+            }
+
+            return null;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static String RandomString(Int32 size)
+        {
+            var builder = new StringBuilder();
+
+            var quantity = Math.Ceiling(size / 32.0);
+
+            for (var i = 0; i < quantity; i++)
+                builder.Append(Guid.NewGuid().ToString().Replace("-", String.Empty));
+
+            if (builder.Length > size)
+            {
+                var diff = builder.Length - size;
+                builder.Remove(builder.Length - diff, diff);
+            }
+
+            return builder.ToString();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static String FileSizeString(long length)
+        {
+            long num1 = 1024;
+            long num2 = num1 * 1024L;
+            long num3 = num2 * 1024L;
+            long num4 = num3 * 1024L;
+            double num5 = (double)length;
+            String str = "B";
+            if (length >= num4)
+            {
+                num5 = Math.Round((double)length / (double)num4, 2);
+                str = "TB";
+            }
+            else if (length >= num3)
+            {
+                num5 = Math.Round((double)length / (double)num3, 2);
+                str = "GB";
+            }
+            else if (length >= num2)
+            {
+                num5 = Math.Round((double)length / (double)num2, 2);
+                str = "MB";
+            }
+            else if (length >= num1)
+            {
+                num5 = Math.Round((double)length / (double)num1, 2);
+                str = "KB";
+            }
+            return String.Format("{0} {1}", num5, str);
+        }
+
+        /// <summary>
+        /// Determines if a string is alpha numeric.
+        /// </summary>
+        /// <param name="text">The string to evaluate.</param>
+        /// <returns>
+        /// Returns true if the string is alpha-numeric, false if not.
+        /// </returns>
+        public static Boolean IsAlphanumeric(this String text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return false;
+
+            var result = !_notAlphaNumericRegex.IsMatch(text);
+            return result;
+        }
+
+        /// <summary>
+        /// Converts the specified string to an alpha-numeric string
+        /// by removing all non-alpha-numeric characters.
+        /// </summary>
+        /// <param name="value">The string to convert.</param>
+        /// <remarks>
+        /// An empty string ("") is considered alpha-numeric.
+        /// </remarks>
+        /// <returns>
+        /// The specified string with all non-alpha-numeric characters removed.
+        /// </returns>
+        public static string ToAlphanumeric(this string value)
+        {
+            var result = _notAlphaNumericRegex.Replace(value, String.Empty);
+            return result;
+        }
+
+        /// <summary>
+        /// Makes a string safe to insert as a value into a
+        /// comma separated values (CSV) object such as a file.
+        /// </summary>
+        /// <remarks>
+        /// Here are the rules for making a string CSV safe:
+        /// <a href="http://en.wikipedia.org/wiki/Comma-separated_values" />.
+        /// </remarks>
+        /// <param name="value">The string to make safe.</param>
+        /// <returns>
+        /// Returns a string that is safe to insert into a CSV object.
+        /// </returns>
+        public static String ToCsvSafe(this string value)
+        {
+            if (String.IsNullOrEmpty(value))
+                return value;
+
+            var containsCommas = value.Contains(",");
+            var containsDoubleQuotes = value.Contains("\"");
+            var containsLineBreak = value.Contains(Environment.NewLine);
+            containsLineBreak = containsLineBreak || value.Contains("\n");
+            var hasLeadingSpace = value[0] == ' ';
+            var hasTrailingSpace = value[value.Length - 1] == ' ';
+
+            if (containsDoubleQuotes)
+            {
+                value = value.Replace("\"", "\"\"");
+            }
+
+            if (containsCommas || containsDoubleQuotes || containsLineBreak || hasLeadingSpace || hasTrailingSpace)
+            {
+                value = "\"" + value + "\"";
+            }
+
+            return value;
+        }
+
         /// <summary>
         /// Strip all others caracters from a text lefting only numbers
         /// </summary>

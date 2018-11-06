@@ -1,3 +1,5 @@
+<img style="float: left; width: 50px; margin-right: 10px;" src="nuget-logo.png">
+
 Hto3.StringHelpers
 ========================================
 
