@@ -40,7 +40,7 @@ A set of extension methods that can be used to facilitate the manipulation of st
 ### AppendMissing
 
 ```csharp
-@"C:\Program Files (x86)\Java".AppendMissing("\"") == @"C:\Program Files (x86)\Java\";
+@"C:\Program Files (x86)\Java".AppendMissing("\\") == @"C:\Program Files (x86)\Java\";
 ```
 
 ### NullIf
