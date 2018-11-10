@@ -143,14 +143,6 @@ Assert.AreEqual("John Doe".TryGetLastName(out test), true);
 Assert.AreEqual(test, "Doe");
 ```
 
-### TryGetExceptFirstName
-
-```csharp
-String test = null;
-Assert.AreEqual("John Master Doe".TryGetExceptFirstName(out test), true);
-Assert.AreEqual(test, "Master Doe");
-```
-
 ### FormatCPF
 
 ```csharp
