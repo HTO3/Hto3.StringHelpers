@@ -76,7 +76,6 @@
     <Compile Include="Reverse.cs" />
     <Compile Include="Right.cs" />
     <Compile Include="ToAlphanumeric.cs" />
-    <Compile Include="TryGetExceptFirstName.cs" />
     <Compile Include="TryGetFirstName.cs" />
     <Compile Include="TryGetLastName.cs" />
   </ItemGroup>

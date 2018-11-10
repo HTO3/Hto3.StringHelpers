@@ -17,8 +17,12 @@ namespace Hto3.StringHelpers
         {
             if (amount < 0)
                 throw new ArgumentOutOfRangeException(nameof(amount));
+
             if (String.IsNullOrEmpty(text))
                 return text;
+
+            if (text.Length < amount)
+                return String.Empty;
 
             return text.Substring(amount);
         }
@@ -32,8 +36,12 @@ namespace Hto3.StringHelpers
         {
             if (amount < 0)
                 throw new ArgumentOutOfRangeException(nameof(amount));
+
             if (String.IsNullOrEmpty(text))
                 return text;
+
+            if (text.Length < amount)
+                return String.Empty;
 
             return text.Remove(text.Length - amount);
         }
@@ -132,6 +140,9 @@ namespace Hto3.StringHelpers
         /// <returns></returns>
         public static String RandomString(Int32 size)
         {
+            if (size < 0)
+                throw new ArgumentOutOfRangeException(nameof(size));
+
             var builder = new StringBuilder();
 
             var quantity = Math.Ceiling(size / 32.0);
@@ -169,6 +180,9 @@ namespace Hto3.StringHelpers
         /// <returns></returns>
         public static String ToAlphanumeric(this String value)
         {
+            if (String.IsNullOrEmpty(value))
+                return value;
+
             var result = _notAlphaNumericRegex.Replace(value, String.Empty);
             return result;
         }
@@ -409,23 +423,6 @@ namespace Hto3.StringHelpers
                 lastName = fullName.Substring(fullName.LastIndexOf(" ") + 1);
                 return true;
             }                
-        }
-        /// <summary>
-        /// Tries to exclude the first name of a full name and return the middle and the last name
-        /// </summary>
-        /// <param name="name">The full name of a person</param>
-        /// <returns></returns>
-        public static String TryGetExceptFirstName(this String name)
-        {
-            if (String.IsNullOrEmpty(name))
-                return name;
-
-            name = name.TrimEnd();
-
-            if (name.IndexOf(" ") == -1)
-                return name;
-            else
-                return name.Substring(name.IndexOf(" ") + 1);
         }
         /// <summary>
         /// Format a brazilian CPF
