@@ -70,13 +70,13 @@ Helpers.RandomString(8) == "a84583fc";
 ### ToAlphanumeric
 
 ```csharp
-"[a-z|A-Z|0-9]".IsAlphanumeric() == "azAZ09";
+"[a-z|A-Z|0-9]".ToAlphanumeric() == "azAZ09";
 ```
 
 ### ToCsvSafe
 
 ```csharp
-" Cave rats,\r\ngiant cats!".IsAlphanumeric() == "\" Cave rats,\r\ngiant cats!\"";
+" Cave rats,\r\ngiant cats!".ToCsvSafe() == "\" Cave rats,\r\ngiant cats!\"";
 ```
 
 ### NumbersOnly
