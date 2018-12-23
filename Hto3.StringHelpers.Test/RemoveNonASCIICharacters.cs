@@ -13,11 +13,11 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.RemoveNonASCIICharacters("jäspion("), "jspion(");
-            Assert.AreEqual(Helpers.RemoveNonASCIICharacters("App-le"), "App-le");
-            Assert.AreEqual(Helpers.RemoveNonASCIICharacters("私は日本語がわからない"), "");
-            Assert.AreEqual(Helpers.RemoveNonASCIICharacters(""), "");
-            Assert.AreEqual(Helpers.RemoveNonASCIICharacters(null), null);
+            Assert.AreEqual(StringHelpers.RemoveNonASCIICharacters("jäspion("), "jspion(");
+            Assert.AreEqual(StringHelpers.RemoveNonASCIICharacters("App-le"), "App-le");
+            Assert.AreEqual(StringHelpers.RemoveNonASCIICharacters("私は日本語がわからない"), "");
+            Assert.AreEqual(StringHelpers.RemoveNonASCIICharacters(""), "");
+            Assert.AreEqual(StringHelpers.RemoveNonASCIICharacters(null), null);
         }
     }
 }

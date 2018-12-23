@@ -13,9 +13,9 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.Reverse("Apple"), "elppA");
-            Assert.AreEqual(Helpers.Reverse(""), "");
-            Assert.AreEqual(Helpers.Reverse(null), null);
+            Assert.AreEqual(StringHelpers.Reverse("Apple"), "elppA");
+            Assert.AreEqual(StringHelpers.Reverse(""), "");
+            Assert.AreEqual(StringHelpers.Reverse(null), null);
         }
     }
 }

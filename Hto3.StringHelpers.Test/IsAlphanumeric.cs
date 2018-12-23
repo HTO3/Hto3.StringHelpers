@@ -13,10 +13,10 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.IsAlphanumeric("azAZ09"), true);
-            Assert.AreEqual(Helpers.IsAlphanumeric("-,"), false);
-            Assert.AreEqual(Helpers.IsAlphanumeric(""), false);
-            Assert.AreEqual(Helpers.IsAlphanumeric(null), false);
+            Assert.AreEqual(StringHelpers.IsAlphanumeric("azAZ09"), true);
+            Assert.AreEqual(StringHelpers.IsAlphanumeric("-,"), false);
+            Assert.AreEqual(StringHelpers.IsAlphanumeric(""), false);
+            Assert.AreEqual(StringHelpers.IsAlphanumeric(null), false);
         }
     }
 }

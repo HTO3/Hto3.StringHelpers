@@ -13,9 +13,9 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.Coalesce(null, null, "6", "7"), "6");
-            Assert.AreEqual(Helpers.Coalesce(null, null), null);
-            Assert.AreEqual(Helpers.Coalesce("gg", null, null), "gg");
+            Assert.AreEqual(StringHelpers.Coalesce(null, null, "6", "7"), "6");
+            Assert.AreEqual(StringHelpers.Coalesce(null, null), null);
+            Assert.AreEqual(StringHelpers.Coalesce("gg", null, null), "gg");
         }
     }
 }

@@ -4,7 +4,10 @@ using System.Text.RegularExpressions;
 
 namespace Hto3.StringHelpers
 {
-    public static class Helpers
+    /// <summary>
+    /// Class containing helpers for string manipulation
+    /// </summary>
+    public static class StringHelpers
     {
         private static readonly Regex _notAlphaNumericRegex = new Regex("[^a-zA-Z0-9]", RegexOptions.Compiled);
         /// <summary>
@@ -236,7 +239,7 @@ namespace Hto3.StringHelpers
         /// <summary>
         /// Strip all others caracters from a text lefting only non-numbers
         /// </summary>
-        /// <param name="texto">The original text</param>
+        /// <param name="text">The original text</param>
         /// <returns></returns>
         public static String ExceptNumbers(this String text)
         {
@@ -384,6 +387,7 @@ namespace Hto3.StringHelpers
         /// Tries to get the first name of a full name
         /// </summary>
         /// <param name="fullName">The full name of a person</param>
+        /// <param name="firstName"></param>
         /// <returns></returns>
         public static Boolean TryGetFirstName(this String fullName, out String firstName)
         {
@@ -406,6 +410,7 @@ namespace Hto3.StringHelpers
         /// Tries to get the last name of a full name
         /// </summary>
         /// <param name="fullName">The full name of a person</param>
+        /// <param name="lastName"></param>
         /// <returns></returns>
         public static Boolean TryGetLastName(this String fullName, out String lastName)
         {

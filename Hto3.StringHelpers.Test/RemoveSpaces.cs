@@ -13,11 +13,11 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.RemoveSpaces("     "), "");
-            Assert.AreEqual(Helpers.RemoveSpaces("\tdd"), "\tdd");
-            Assert.AreEqual(Helpers.RemoveSpaces("The best choice"), "Thebestchoice");
-            Assert.AreEqual(Helpers.RemoveSpaces(""), "");
-            Assert.AreEqual(Helpers.RemoveSpaces(null), null);
+            Assert.AreEqual(StringHelpers.RemoveSpaces("     "), "");
+            Assert.AreEqual(StringHelpers.RemoveSpaces("\tdd"), "\tdd");
+            Assert.AreEqual(StringHelpers.RemoveSpaces("The best choice"), "Thebestchoice");
+            Assert.AreEqual(StringHelpers.RemoveSpaces(""), "");
+            Assert.AreEqual(StringHelpers.RemoveSpaces(null), null);
         }
     }
 }

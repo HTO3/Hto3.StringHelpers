@@ -13,9 +13,9 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.AppendMissing(@"C:\Program Files (x86)\Java", "\\"), @"C:\Program Files (x86)\Java\");
-            Assert.AreEqual(Helpers.AppendMissing("", "-"), "-");
-            Assert.AreEqual(Helpers.AppendMissing(null, "n"), "n");
+            Assert.AreEqual(StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", "\\"), @"C:\Program Files (x86)\Java\");
+            Assert.AreEqual(StringHelpers.AppendMissing("", "-"), "-");
+            Assert.AreEqual(StringHelpers.AppendMissing(null, "n"), "n");
         }
     }
 }

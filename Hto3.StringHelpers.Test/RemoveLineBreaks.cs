@@ -13,10 +13,10 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.RemoveLineBreaks("\r\ndfdfdfdf\r\n"), "dfdfdfdf");
-            Assert.AreEqual(Helpers.RemoveLineBreaks("\ndd\n"), "dd");
-            Assert.AreEqual(Helpers.RemoveLineBreaks(""), "");
-            Assert.AreEqual(Helpers.RemoveLineBreaks(null), null);
+            Assert.AreEqual(StringHelpers.RemoveLineBreaks("\r\ndfdfdfdf\r\n"), "dfdfdfdf");
+            Assert.AreEqual(StringHelpers.RemoveLineBreaks("\ndd\n"), "dd");
+            Assert.AreEqual(StringHelpers.RemoveLineBreaks(""), "");
+            Assert.AreEqual(StringHelpers.RemoveLineBreaks(null), null);
         }
     }
 }

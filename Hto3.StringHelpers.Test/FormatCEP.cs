@@ -13,13 +13,13 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.FormatCEP("11111111"), "11111-111");
-            Assert.AreEqual(Helpers.FormatCEP("111111de"), "11111-100");
-            Assert.AreEqual(Helpers.FormatCEP("11111"), "11111-000");
-            Assert.AreEqual(Helpers.FormatCEP("111"), null);
-            Assert.AreEqual(Helpers.FormatCEP("11111111111111"), null);
-            Assert.AreEqual(Helpers.FormatCEP(""), null);
-            Assert.AreEqual(Helpers.FormatCEP(null), null);
+            Assert.AreEqual(StringHelpers.FormatCEP("11111111"), "11111-111");
+            Assert.AreEqual(StringHelpers.FormatCEP("111111de"), "11111-100");
+            Assert.AreEqual(StringHelpers.FormatCEP("11111"), "11111-000");
+            Assert.AreEqual(StringHelpers.FormatCEP("111"), null);
+            Assert.AreEqual(StringHelpers.FormatCEP("11111111111111"), null);
+            Assert.AreEqual(StringHelpers.FormatCEP(""), null);
+            Assert.AreEqual(StringHelpers.FormatCEP(null), null);
         }
     }
 }

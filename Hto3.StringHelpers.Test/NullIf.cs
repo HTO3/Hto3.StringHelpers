@@ -13,10 +13,10 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.NullIf("", ""), null);
-            Assert.AreEqual(Helpers.NullIf("null", ""), "null");
-            Assert.AreEqual(Helpers.NullIf(null, "r"), null);
-            Assert.AreEqual(Helpers.NullIf(null, null), null);
+            Assert.AreEqual(StringHelpers.NullIf("", ""), null);
+            Assert.AreEqual(StringHelpers.NullIf("null", ""), "null");
+            Assert.AreEqual(StringHelpers.NullIf(null, "r"), null);
+            Assert.AreEqual(StringHelpers.NullIf(null, null), null);
         }
     }
 }

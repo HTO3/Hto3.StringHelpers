@@ -13,21 +13,21 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            var randomString1 = Helpers.RandomString(6);
+            var randomString1 = StringHelpers.RandomString(6);
             Assert.IsNotNull(randomString1);
             Assert.AreEqual(randomString1.Length, 6);
 
-            var randomString2 = Helpers.RandomString(0);
+            var randomString2 = StringHelpers.RandomString(0);
             Assert.IsNotNull(randomString2);
             Assert.AreEqual(randomString2.Length, 0);
 
-            var randomString3 = Helpers.RandomString(40);
+            var randomString3 = StringHelpers.RandomString(40);
             Assert.IsNotNull(randomString3);
             Assert.AreEqual(randomString3.Length, 40);
 
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                Helpers.RandomString(-10);
+                StringHelpers.RandomString(-10);
             });
         }
     }

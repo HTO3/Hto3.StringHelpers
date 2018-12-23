@@ -13,14 +13,14 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.RemoveCharactersAtBegining("Although", 2), "though");
+            Assert.AreEqual(StringHelpers.RemoveCharactersAtBegining("Although", 2), "though");
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                Helpers.RemoveCharactersAtBegining("Although", -2);
+                StringHelpers.RemoveCharactersAtBegining("Although", -2);
             });
-            Assert.AreEqual(Helpers.RemoveCharactersAtBegining(null, 2), null);
-            Assert.AreEqual(Helpers.RemoveCharactersAtBegining("Although", 20), "");
-            Assert.AreEqual(Helpers.RemoveCharactersAtBegining("Although", 8), "");
+            Assert.AreEqual(StringHelpers.RemoveCharactersAtBegining(null, 2), null);
+            Assert.AreEqual(StringHelpers.RemoveCharactersAtBegining("Although", 20), "");
+            Assert.AreEqual(StringHelpers.RemoveCharactersAtBegining("Although", 8), "");
         }
     }
 }

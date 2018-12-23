@@ -13,12 +13,12 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.PrependMissing(":\\", "C"), "C:\\");
-            Assert.AreEqual(Helpers.PrependMissing("C:\\", "C"), "C:\\");
-            Assert.AreEqual(Helpers.PrependMissing(null, "C"), "C");
+            Assert.AreEqual(StringHelpers.PrependMissing(":\\", "C"), "C:\\");
+            Assert.AreEqual(StringHelpers.PrependMissing("C:\\", "C"), "C:\\");
+            Assert.AreEqual(StringHelpers.PrependMissing(null, "C"), "C");
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                Assert.AreEqual(Helpers.PrependMissing(null, null), null);
+                Assert.AreEqual(StringHelpers.PrependMissing(null, null), null);
             });
         }
     }

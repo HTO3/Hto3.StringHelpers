@@ -13,16 +13,16 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.ReplaceIgnoringCase("O ônibus já chegou", "Ônibus", "ubber"), "O ubber já chegou");
-            Assert.AreEqual(Helpers.ReplaceIgnoringCase("D5\r\n\t4¨8d(f&$Eedu", "$e", "_"), "D5\r\n\t4¨8d(f&_edu");
-            Assert.AreEqual(Helpers.ReplaceIgnoringCase(null, "e", "_"), null);
+            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("O ônibus já chegou", "Ônibus", "ubber"), "O ubber já chegou");
+            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("D5\r\n\t4¨8d(f&$Eedu", "$e", "_"), "D5\r\n\t4¨8d(f&_edu");
+            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase(null, "e", "_"), null);
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                Assert.AreEqual(Helpers.ReplaceIgnoringCase(null, null, "_"), null);
+                Assert.AreEqual(StringHelpers.ReplaceIgnoringCase(null, null, "_"), null);
             });
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                Assert.AreEqual(Helpers.ReplaceIgnoringCase("sdfasgJKker", "", null), null);
+                Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("sdfasgJKker", "", null), null);
             });
         }
     }

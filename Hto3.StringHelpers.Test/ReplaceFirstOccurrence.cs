@@ -13,15 +13,15 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(Helpers.ReplaceFirstOccurrence("Carro carro carro carro", "carro", "ônibus"), "Carro ônibus carro carro");
-            Assert.AreEqual(Helpers.ReplaceFirstOccurrence("kabuto", "ja", "mo"), "kabuto");
+            Assert.AreEqual(StringHelpers.ReplaceFirstOccurrence("Carro carro carro carro", "carro", "ônibus"), "Carro ônibus carro carro");
+            Assert.AreEqual(StringHelpers.ReplaceFirstOccurrence("kabuto", "ja", "mo"), "kabuto");
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                Assert.AreEqual(Helpers.ReplaceFirstOccurrence(null, null, "comeu"), null);
+                Assert.AreEqual(StringHelpers.ReplaceFirstOccurrence(null, null, "comeu"), null);
             });
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                Assert.AreEqual(Helpers.ReplaceFirstOccurrence(null, "sdaf", null), null);
+                Assert.AreEqual(StringHelpers.ReplaceFirstOccurrence(null, "sdaf", null), null);
             });
         }
     }
