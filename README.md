@@ -3,6 +3,9 @@
 Hto3.StringHelpers
 ========================================
 
+#### Nuget Package
+[![Dapper](https://img.shields.io/nuget/v/Hto3.StringHelpers.svg)](https://www.nuget.org/packages/Hto3.StringHelpers/)
+
 Features
 --------
 A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.
