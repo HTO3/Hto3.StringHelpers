@@ -4,7 +4,7 @@ Hto3.StringHelpers
 ========================================
 
 #### Nuget Package
-[![Dapper](https://img.shields.io/nuget/v/Hto3.StringHelpers.svg)](https://www.nuget.org/packages/Hto3.StringHelpers/)
+[![Hto3.StringHelpers](https://img.shields.io/nuget/v/Hto3.StringHelpers.svg)](https://www.nuget.org/packages/Hto3.StringHelpers/)
 
 Features
 --------
