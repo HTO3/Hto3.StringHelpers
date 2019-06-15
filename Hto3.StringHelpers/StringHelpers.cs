@@ -5,13 +5,13 @@ using System.Text.RegularExpressions;
 namespace Hto3.StringHelpers
 {
     /// <summary>
-    /// Class containing helpers for string manipulation
+    /// Class containing helpers for string manipulation.
     /// </summary>
     public static class StringHelpers
     {
         private static readonly Regex _notAlphaNumericRegex = new Regex("[^a-zA-Z0-9]", RegexOptions.Compiled);
         /// <summary>
-        /// Remove a specified amout of characters at the begining of string
+        /// Remove a specified amout of characters at the begining of string.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="amount"></param>
@@ -30,7 +30,7 @@ namespace Hto3.StringHelpers
             return text.Substring(amount);
         }
         /// <summary>
-        /// Remove a specified amout of characters at the end of string
+        /// Remove a specified amout of characters at the end of string.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="amount"></param>
@@ -49,7 +49,7 @@ namespace Hto3.StringHelpers
             return text.Remove(text.Length - amount);
         }
         /// <summary>
-        /// Remove all spaces ' '
+        /// Remove all spaces ' '.
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace Hto3.StringHelpers
             return text.Replace(" ", String.Empty);
         }
         /// <summary>
-        /// Remove all line breaks
+        /// Remove all line breaks.
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace Hto3.StringHelpers
             return text.Replace("\r", String.Empty).Replace("\n", String.Empty);
         }
         /// <summary>
-        /// If the text does not start with a especified text, then this specified text will be added to the string
+        /// If the text does not start with a especified text, then this specified text will be added to the string.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="shouldStartWith"></param>
@@ -91,7 +91,7 @@ namespace Hto3.StringHelpers
             return text;
         }
         /// <summary>
-        /// If the text does not end with a especified text, then this specified text will be added to the string
+        /// If the text does not end with a especified text, then this specified text will be added to the string.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="shouldEndWith"></param>
@@ -122,7 +122,7 @@ namespace Hto3.StringHelpers
                 return text;
         }
         /// <summary>
-        /// Return the first non-null value
+        /// Return the first non-null value.
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace Hto3.StringHelpers
             return null;
         }
         /// <summary>
-        /// Generate a ramdom string containing letters and numbers
+        /// Generate a ramdom string containing letters and numbers.
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>
@@ -237,7 +237,7 @@ namespace Hto3.StringHelpers
             return builder.ToString();
         }
         /// <summary>
-        /// Strip all others caracters from a text lefting only non-numbers
+        /// Strip all others caracters from a text lefting only non-numbers.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <returns></returns>
@@ -257,7 +257,7 @@ namespace Hto3.StringHelpers
             return builder.ToString();
         }
         /// <summary>
-        /// Extract some characters from right to left
+        /// Extract some characters from right to left.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <param name="length">Amount of characters to extract</param>
@@ -284,7 +284,7 @@ namespace Hto3.StringHelpers
             }
         }
         /// <summary>
-        /// Reverse the characters sequence
+        /// Reverse the characters sequence.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <returns></returns>
@@ -302,7 +302,7 @@ namespace Hto3.StringHelpers
             return builder.ToString();
         }
         /// <summary>
-        /// Extract some characters from left to right
+        /// Extract some characters from left to right.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <param name="length">Amount of characters to extract</param>
@@ -329,7 +329,7 @@ namespace Hto3.StringHelpers
             }
         }
         /// <summary>
-        /// Replace a text with another one ignoring case
+        /// Replace a text with another one ignoring case.
         /// </summary>
         /// <param name="input">The original text</param>
         /// <param name="oldText">The old text</param>
@@ -356,7 +356,7 @@ namespace Hto3.StringHelpers
                 );
         }
         /// <summary>
-        /// Replace whole word
+        /// Replace whole word.
         /// </summary>
         /// <param name="input">The original text</param>
         /// <param name="oldText">The old word</param>
@@ -384,7 +384,7 @@ namespace Hto3.StringHelpers
                 );
         }
         /// <summary>
-        /// Tries to get the first name of a full name
+        /// Tries to get the first name of a full name.
         /// </summary>
         /// <param name="fullName">The full name of a person</param>
         /// <param name="firstName"></param>
@@ -407,7 +407,7 @@ namespace Hto3.StringHelpers
             }                
         }
         /// <summary>
-        /// Tries to get the last name of a full name
+        /// Tries to get the last name of a full name.
         /// </summary>
         /// <param name="fullName">The full name of a person</param>
         /// <param name="lastName"></param>
@@ -430,7 +430,7 @@ namespace Hto3.StringHelpers
             }                
         }
         /// <summary>
-        /// Format a brazilian CPF
+        /// Format a brazilian CPF.
         /// </summary>
         /// <param name="cpf">A CPF with ou without formatting</param>
         /// <returns></returns>
@@ -447,7 +447,7 @@ namespace Hto3.StringHelpers
             return String.Format("{0}.{1}.{2}-{3}", cpfLimpo.Substring(0, 3), cpfLimpo.Substring(3, 3), cpfLimpo.Substring(6, 3), cpfLimpo.Substring(9, 2));
         }
         /// <summary>
-        /// Format a brazilian CNPJ
+        /// Format a brazilian CNPJ.
         /// </summary>
         /// <param name="cnpj">A CNPJ with or without formatting</param>
         /// <returns></returns>
@@ -464,7 +464,7 @@ namespace Hto3.StringHelpers
             return String.Format("{0}.{1}.{2}/{3}-{4}", cnpjLimpo.Substring(0, 2), cnpjLimpo.Substring(2, 3), cnpjLimpo.Substring(5, 3), cnpjLimpo.Substring(8, 4), cnpjLimpo.Substring(12, 2));
         }
         /// <summary>
-        /// Format a brazilian zip code
+        /// Format a brazilian zip code.
         /// </summary>
         /// <param name="cep">A brazilian CEP with or without formatting</param>
         /// <returns></returns>
@@ -483,7 +483,7 @@ namespace Hto3.StringHelpers
             return cep.Substring(0, 5) + '-' + cep.Substring(5);
         }
         /// <summary>
-        /// Verify if a text is a number
+        /// Verify if a text is a number.
         /// </summary>
         /// <param name="text">The text that will be tested</param>
         /// <param name="onlyIntegerNumbers">If true, the text will be tested to be an integer (decimal part MUST not exist)</param>
@@ -503,7 +503,7 @@ namespace Hto3.StringHelpers
             }
         }
         /// <summary>
-        /// Remove all non-ASCII characters from a text
+        /// Remove all non-ASCII characters from a text.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <returns></returns>
@@ -515,7 +515,7 @@ namespace Hto3.StringHelpers
                 return System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0000-\u007F]", String.Empty);
         }
         /// <summary>
-        /// Remove accents replacing the character with the equivalent without accent
+        /// Remove accents replacing the character with the equivalent without accent.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <returns></returns>
@@ -556,7 +556,7 @@ namespace Hto3.StringHelpers
             return originalText.Substring(0, pos) + newValue + originalText.Substring(pos + oldValue.Length);
         }
         /// <summary>
-        /// Center a text inside a fixed length using space characters ' '
+        /// Center a text inside a fixed length using space characters ' '.
         /// </summary>
         /// <param name="text">Text to format</param>
         /// <param name="totalLength">Total length</param>
