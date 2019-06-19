@@ -515,6 +515,44 @@ namespace Hto3.StringHelpers
                 return System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0000-\u007F]", String.Empty);
         }
         /// <summary>
+        /// Remove all non-ANSI characters from a text.
+        /// </summary>
+        /// <param name="text">The original text</param>
+        /// <returns></returns>
+        public static String RemoveNonANSICharacters(this String text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return text;
+            else
+                return System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0000-\u00FF]", String.Empty);
+        }
+        /// <summary>
+        /// Replace all non-ANSI characters with a character.
+        /// </summary>
+        /// <param name="text">The original text</param>
+        /// <param name="replace">Replace with this char</param>
+        /// <returns></returns>
+        public static String ReplaceNonANSICharactersWith(this String text, Char replace)
+        {
+            if (String.IsNullOrEmpty(text))
+                return text;
+            else
+                return System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0000-\u00FF]", replace.ToString());
+        }
+        /// <summary>
+        /// Replace all non-ASCII characters with a character.
+        /// </summary>
+        /// <param name="text">The original text</param>
+        /// <param name="replace">Replace with this char</param>
+        /// <returns></returns>
+        public static String ReplaceNonASCIICharactersWith(this String text, Char replace)
+        {
+            if (String.IsNullOrEmpty(text))
+                return text;
+            else
+                return System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0000-\u007F]", replace.ToString());
+        }
+        /// <summary>
         /// Remove accents replacing the character with the equivalent without accent.
         /// </summary>
         /// <param name="text">The original text</param>

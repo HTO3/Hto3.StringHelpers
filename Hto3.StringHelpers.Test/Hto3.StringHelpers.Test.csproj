@@ -68,10 +68,13 @@
     <Compile Include="RemoveCharactersAtBegining.cs" />
     <Compile Include="RemoveCharactersAtEnd.cs" />
     <Compile Include="RemoveLineBreaks.cs" />
+    <Compile Include="RemoveNonANSICharacters.cs" />
     <Compile Include="RemoveNonASCIICharacters.cs" />
     <Compile Include="RemoveSpaces.cs" />
     <Compile Include="ReplaceFirstOccurrence.cs" />
     <Compile Include="ReplaceIgnoringCase.cs" />
+    <Compile Include="ReplaceNonANSICharactersWith.cs" />
+    <Compile Include="ReplaceNonASCIICharactersWith.cs" />
     <Compile Include="ReplaceWholeWord.cs" />
     <Compile Include="Reverse.cs" />
     <Compile Include="Right.cs" />

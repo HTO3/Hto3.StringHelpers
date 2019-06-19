@@ -1,4 +1,4 @@
-<img alt="logo" width="150" height="150" src="nuget-logo.png">
+﻿<img alt="logo" width="150" height="150" src="nuget-logo.png">
 
 Hto3.StringHelpers
 ========================================
@@ -227,7 +227,31 @@ Verify if a text is a number.
 Remove all non-ASCII characters from a text.
 
 ```csharp
-"j�spion-".RemoveNonASCIICharacters() == "jspion-";
+"jäspion-".RemoveNonASCIICharacters() == "jspion-";
+```
+
+### RemoveNonANSICharacters
+
+Remove all non-ANSI characters from a text.
+
+```csharp
+"jäspion-ﮝ".RemoveNonANSICharacters() == "jspion-";
+```
+
+### ReplaceNonASCIICharactersWith
+
+Replace all non-ASCII characters with a character.
+
+```csharp
+"jäspion-".ReplaceNonASCIICharactersWith('?') == "j?spion-";
+```
+
+### ReplaceNonANSICharactersWith
+
+Replace all non-ANSI characters with a character.
+
+```csharp
+"jäspion-ﮝ".ReplaceNonANSICharactersWith('?') == "jäspion-?";
 ```
 
 ### RemoveAccents
@@ -235,7 +259,7 @@ Remove all non-ASCII characters from a text.
 Remove accents replacing the character with the equivalent without accent.
 
 ```csharp
-"j�spion".RemoveAccents() == "jaspion";
+"jäspion".RemoveAccents() == "jaspion";
 ```
 
 ### CenterAlignText
