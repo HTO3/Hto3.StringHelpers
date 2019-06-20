@@ -599,7 +599,7 @@ namespace Hto3.StringHelpers
         /// <param name="text">Text to format</param>
         /// <param name="totalLength">Total length</param>
         /// <returns></returns>
-        public static String CenterAlignText(String text, Int32 totalLength)
+        public static String CenterAlignText(this String text, Int32 totalLength)
         {
             if (totalLength < 0)
                 throw new ArgumentOutOfRangeException(nameof(totalLength));
@@ -615,5 +615,22 @@ namespace Hto3.StringHelpers
             var isEven = (totalLength - formatedText.Trim().Length) % 2;
             return new String(' ', size) + formatedText + new String(' ', isEven == 0 || size == 0 ? size : size - 1);
         }
+#if NETSTANDARD2_0
+        /// <summary>
+        /// Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns></returns>
+        public static String NormalizePathSlashes(this String path)
+        {
+            if (String.IsNullOrEmpty(path))
+                return path;
+
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+                return path.Replace("/", "\\");
+            else
+                return path.Replace("\\", "/");
+        }
+#endif
     }
 }

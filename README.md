@@ -235,7 +235,7 @@ Remove all non-ASCII characters from a text.
 Remove all non-ANSI characters from a text.
 
 ```csharp
-"jäspion-ﮝ".RemoveNonANSICharacters() == "jspion-";
+"jäspion-ﮝ".RemoveNonANSICharacters() == "jäspion-";
 ```
 
 ### ReplaceNonASCIICharactersWith
@@ -268,4 +268,13 @@ Center a text inside a fixed length using space characters ' '.
 
 ```csharp
 "job".CenterAlignText(30) == "             job            ";
+```
+
+### NormalizePathSlashes
+
+Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
+
+```csharp
+//on Windows
+"/var/lib/file.txt".NormalizePathSlashes() == "\\var\\lib\\file.txt";
 ```

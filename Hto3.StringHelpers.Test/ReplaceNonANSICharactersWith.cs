@@ -13,7 +13,7 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-
+            Assert.AreEqual("jäspion-ﮝ".ReplaceNonANSICharactersWith('?'), "jäspion-?");
         }
     }
 }
