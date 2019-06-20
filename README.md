@@ -272,7 +272,7 @@ Center a text inside a fixed length using space characters ' '.
 
 ### NormalizePathSlashes
 
-Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
+Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\\', else all '\\' will be replaced by '/'.
 
 ```csharp
 //on Windows
