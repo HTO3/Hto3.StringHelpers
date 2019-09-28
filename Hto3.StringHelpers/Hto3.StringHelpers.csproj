@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net40;net45;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net40;net45;net46;net47;net48</TargetFrameworks>
     <Authors>HTO3</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company />
@@ -14,9 +14,9 @@
     <Description>A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-    <FileVersion>1.0.5.0</FileVersion>
-    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
