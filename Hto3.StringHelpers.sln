@@ -5,19 +5,18 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hto3.StringHelpers", "Hto3.StringHelpers\Hto3.StringHelpers.csproj", "{59BBE86D-BFC5-4419-80D0-AC5CA3398A26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hto3.StringHelpers.Test", "Hto3.StringHelpers.Test\Hto3.StringHelpers.Test.csproj", "{FD7147DA-9013-471D-9B0A-5B0EF5742BFF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46B7FFD6-DA47-4939-9AAD-EF58F5E016F0}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		.travis.yml = .travis.yml
 		LICENSE = LICENSE
 		nuget-logo.png = nuget-logo.png
 		nuget-logo.psd = nuget-logo.psd
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hto3.StringHelpers.TestCore2.2", "Hto3.StringHelpers.TestCore2.2\Hto3.StringHelpers.TestCore2.2.csproj", "{6EC75C24-D98D-45B8-9478-CE3FC5ED1241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hto3.StringHelpers.Test", "Hto3.StringHelpers.Test\Hto3.StringHelpers.Test.csproj", "{6EC75C24-D98D-45B8-9478-CE3FC5ED1241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +28,6 @@ Global
 		{59BBE86D-BFC5-4419-80D0-AC5CA3398A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59BBE86D-BFC5-4419-80D0-AC5CA3398A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59BBE86D-BFC5-4419-80D0-AC5CA3398A26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD7147DA-9013-471D-9B0A-5B0EF5742BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD7147DA-9013-471D-9B0A-5B0EF5742BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD7147DA-9013-471D-9B0A-5B0EF5742BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD7147DA-9013-471D-9B0A-5B0EF5742BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EC75C24-D98D-45B8-9478-CE3FC5ED1241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EC75C24-D98D-45B8-9478-CE3FC5ED1241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC75C24-D98D-45B8-9478-CE3FC5ED1241}.Release|Any CPU.ActiveCfg = Release|Any CPU

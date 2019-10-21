@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Hto3.StringHelpers.TestCore2._2
+namespace Hto3.StringHelpers.Test
 {
     [TestClass]
     public class NormalizePathSlashes

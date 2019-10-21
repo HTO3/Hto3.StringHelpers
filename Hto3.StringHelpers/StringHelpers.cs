@@ -615,7 +615,7 @@ namespace Hto3.StringHelpers
             var isEven = (totalLength - formatedText.Trim().Length) % 2;
             return new String(' ', size) + formatedText + new String(' ', isEven == 0 || size == 0 ? size : size - 1);
         }
-#if NETSTANDARD2_0
+#if !NETFRAMEWORK
         /// <summary>
         /// Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
         /// </summary>
