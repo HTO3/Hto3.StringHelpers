@@ -15,5 +15,11 @@ namespace Hto3.StringHelpers.Test
         {
             Assert.AreEqual("jäspion-".ReplaceNonASCIICharactersWith('?'), "j?spion-");
         }
+
+        [TestMethod]
+        public void Empty_String()
+        {
+            Assert.AreEqual(String.Empty, String.Empty.ReplaceNonASCIICharactersWith('?'));
+        }
     }
 }

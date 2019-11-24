@@ -15,5 +15,11 @@ namespace Hto3.StringHelpers.Test
         {
             Assert.AreEqual("jäspion-ﮝ".RemoveNonANSICharacters(), "jäspion-");
         }
+
+        [TestMethod]
+        public void Empty_String()
+        {
+            Assert.AreEqual(String.Empty, String.Empty.RemoveNonANSICharacters());
+        }
     }
 }

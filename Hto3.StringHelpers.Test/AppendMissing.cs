@@ -17,5 +17,12 @@ namespace Hto3.StringHelpers.Test
             Assert.AreEqual(StringHelpers.AppendMissing("", "-"), "-");
             Assert.AreEqual(StringHelpers.AppendMissing(null, "n"), "n");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Without_Should_End_With()
+        {
+            StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", null);
+        }
     }
 }
