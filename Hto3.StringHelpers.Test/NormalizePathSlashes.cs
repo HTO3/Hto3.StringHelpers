@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Hto3.StringHelpers.Test
 {
@@ -12,6 +13,12 @@ namespace Hto3.StringHelpers.Test
                 Assert.AreEqual("/var/lib/file.txt".NormalizePathSlashes(), "\\var\\lib\\file.txt");
             else
                 Assert.AreEqual("/var/lib/file.txt".NormalizePathSlashes(), "/var/lib/file.txt");
+        }
+
+        [TestMethod]
+        public void Empty_Path()
+        {
+            Assert.AreEqual(String.Empty, "".NormalizePathSlashes());
         }
     }
 }

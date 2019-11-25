@@ -23,6 +23,8 @@ namespace Hto3.StringHelpers.Test
             {
                 Assert.AreEqual(StringHelpers.ReplaceFirstOccurrence(null, "sdaf", null), null);
             });
+            Assert.AreEqual(String.Empty, StringHelpers.ReplaceFirstOccurrence(String.Empty, "ma", "mo"));
+
         }
     }
 }
