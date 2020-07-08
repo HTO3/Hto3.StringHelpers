@@ -615,6 +615,15 @@ namespace Hto3.StringHelpers
             var isEven = (totalLength - formatedText.Trim().Length) % 2;
             return new String(' ', size) + formatedText + new String(' ', isEven == 0 || size == 0 ? size : size - 1);
         }
+        /// <summary>
+        /// Quote a text "<i>text</i>".
+        /// </summary>
+        /// <param name="text">Text to quote</param>
+        /// <returns></returns>
+        public static String QuoteText(this String text)
+        {
+            return $"\"{text}\"";
+        }
 #if !NETFRAMEWORK
         /// <summary>
         /// Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
