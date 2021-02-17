@@ -1,26 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net40;net45;net46;net47;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net40;net45;net46;net47;net48;net5.0</TargetFrameworks>
     <Authors>HTO3</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Company />
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/HTO3/Hto3.StringHelpers</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/HTO3/Hto3.StringHelpers</RepositoryUrl>
     <PackageTags>String manipulation helpers</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/HTO3/Hto3.StringHelpers/master/nuget-logo.png</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/HTO3/Hto3.StringHelpers/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>MIT</Copyright>
     <Description>A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.0.8.0</AssemblyVersion>
-    <FileVersion>1.0.8.0</FileVersion>
-    <Version>1.0.8</Version>
+    <AssemblyVersion>1.0.9.0</AssemblyVersion>
+    <FileVersion>1.0.9.0</FileVersion>
+    <Version>1.0.9</Version>
+    <PackageIcon>nuget-logo.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DocumentationFile>bin\Release\Hto3.StringHelpers.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\nuget-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
