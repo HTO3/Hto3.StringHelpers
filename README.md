@@ -3,9 +3,11 @@
 Hto3.StringHelpers
 ========================================
 
-|Nuget Package|Build|Test Coverage|
-|---|---|---|
-|[![Hto3.StringHelpers](https://img.shields.io/nuget/v/Hto3.StringHelpers.svg)](https://www.nuget.org/packages/Hto3.StringHelpers/)|[![Build Status](https://travis-ci.org/HTO3/Hto3.StringHelpers.svg?branch=master)](https://travis-ci.org/HTO3/Hto3.StringHelpers)|[![codecov](https://codecov.io/gh/HTO3/Hto3.StringHelpers/branch/master/graph/badge.svg)](https://codecov.io/gh/HTO3/Hto3.StringHelpers)|
+[![License](https://img.shields.io/github/license/HTO3/Hto3.StringHelpers)](https://github.com/HTO3/Hto3.StringHelpers/blob/master/LICENSE)
+[![Hto3.StringHelpers](https://img.shields.io/nuget/v/Hto3.StringHelpers.svg)](https://www.nuget.org/packages/Hto3.StringHelpers/)
+[![Downloads](https://img.shields.io/nuget/dt/Hto3.StringHelpers)](https://www.nuget.org/stats/packages/Hto3.StringHelpers?groupby=Version)
+[![Build Status](https://travis-ci.org/HTO3/Hto3.StringHelpers.svg?branch=master)](https://travis-ci.org/HTO3/Hto3.StringHelpers)
+[![codecov](https://codecov.io/gh/HTO3/Hto3.StringHelpers/branch/master/graph/badge.svg)](https://codecov.io/gh/HTO3/Hto3.StringHelpers)
 
 Features
 --------
