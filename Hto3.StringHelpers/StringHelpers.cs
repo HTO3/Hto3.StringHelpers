@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hto3.StringHelpers.Models;
+using System;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -623,6 +625,125 @@ namespace Hto3.StringHelpers
         public static String QuoteText(this String text)
         {
             return $"\"{text}\"";
+        }
+        /// <summary>
+        /// Assert if a char is printable.
+        /// </summary>
+        /// <param name="c">Char to check.</param>
+        /// <returns></returns>
+        public static Boolean IsPrintableChar(this Char c)
+        {
+            return !(Char.IsControl(c) || Char.IsWhiteSpace(c));
+        }
+
+        /// <summary>
+        /// Mask Text with a replacement char.
+        /// </summary>
+        /// <param name="text">Text to mask.</param>
+        /// <param name="coverage">Coverage percentage, where 0 is no coverage and 1 is full coverage.</param>
+        /// <param name="mode">Chosse between coverage styles to prevent the text to be guessable.</param>
+        /// <param name="replacementChar">Char to use as the mask.</param>
+        /// <returns></returns>
+        public static String MaskText(this String text, Single coverage, MaskTextMode mode, Char replacementChar = '*')
+        {
+            if (coverage < 0 || coverage > 1)
+                throw new ArgumentOutOfRangeException(nameof(coverage));
+            if (String.IsNullOrEmpty(text))
+                return text;
+
+            var maskableLength = text.Count(t => t.IsPrintableChar());
+            var coverageTargetLength = (Int32)Math.Ceiling(maskableLength * coverage);
+            var result = new StringBuilder();
+            var cursor = default(Int32);
+
+            switch (mode)
+            {
+                case MaskTextMode.Begining:
+                    cursor = 0;
+                    while (coverageTargetLength > 0)
+                    {
+                        var c = text[cursor++];
+                        if (c.IsPrintableChar())
+                        {
+                            result.Append(replacementChar);
+                            coverageTargetLength--;
+                        }
+                        else
+                            result.Append(c);
+                    }
+                    result.Append(text.Substring(cursor));
+                    break;
+                case MaskTextMode.Ending:
+                    cursor = text.Length - 1;
+                    while (coverageTargetLength > 0)
+                    {
+                        var c = text[cursor--];
+                        if (c.IsPrintableChar())
+                        {
+                            result.Insert(0, replacementChar);
+                            coverageTargetLength--;
+                        }
+                        else
+                            result.Insert(0, c);
+                    }
+                    result.Insert(0, text.Substring(0, cursor + 1));
+                    break;
+                case MaskTextMode.Center:
+                    cursor = 0;
+                    var diff = maskableLength - coverageTargetLength;
+                    var countToStart = (Int32)Math.Round(diff / 2f);
+                    while (coverageTargetLength > 0)
+                    {
+                        var c = text[cursor++];
+                        if (c.IsPrintableChar())
+                        {
+                            if (countToStart == 0)
+                            {
+                                result.Append(replacementChar);
+                                coverageTargetLength--;
+                            }
+                            else
+                            {
+                                result.Append(c);
+                                countToStart--;
+                            }
+                        }
+                        else
+                            result.Append(c);
+                    }
+                    result.Append(text.Substring(cursor));
+                    break;
+                case MaskTextMode.Intervaled:
+                    cursor = 0;
+                    var interval = (Int32)Math.Round(maskableLength / (Single)coverageTargetLength);
+                    var intervalCount = 0;
+                    result.Append(text);
+
+                    while (coverageTargetLength > 0)
+                    {
+                        for (var i = 0; i < result.Length; i++)
+                        {
+                            if (result[i].IsPrintableChar())
+                            {
+                                if (interval <= ++intervalCount && result[i] != replacementChar)
+                                {
+                                    result[i] = replacementChar;
+                                    coverageTargetLength--;
+                                    intervalCount = 0;
+
+                                    if (coverageTargetLength == 0)
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                    //Fix bug when replacement char already exists
+                    break;
+                case MaskTextMode.Random:
+                    throw new NotImplementedException();
+            }
+
+            return result.ToString();
         }
 #if !NETFRAMEWORK
         /// <summary>
