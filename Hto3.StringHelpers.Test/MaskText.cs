@@ -74,5 +74,21 @@ namespace Hto3.StringHelpers.Test
             //Assert
             Assert.AreEqual(EXPECTED, result);
         }
+
+        [TestMethod]
+        public void MaskRandom()
+        {
+            //Arrange
+            const String TEXT = "The cat is a good friend too.";
+            const Single COVERAGE = 0.5f;
+            const MaskTextMode MODE = MaskTextMode.Random;
+            const Int32 COUNT_MASK_CHARS = 12;
+
+            //Act
+            var result = StringHelpers.MaskText(TEXT, COVERAGE, MODE);
+
+            //Assert
+            Assert.AreEqual(COUNT_MASK_CHARS, result.Count(c => c == '*'));
+        }
     }
 }

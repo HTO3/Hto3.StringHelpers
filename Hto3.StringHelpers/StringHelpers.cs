@@ -736,11 +736,27 @@ namespace Hto3.StringHelpers
                                 }
                             }
                         }
+
+                        if (result.ToString().All(r => !r.IsPrintableChar() || r == replacementChar))
+                            break;
                     }
-                    //Fix bug when replacement char already exists
                     break;
                 case MaskTextMode.Random:
-                    throw new NotImplementedException();
+                    var random = new Random();
+                    result.Append(text);
+                    while (coverageTargetLength > 0)
+                    {
+                        if (result.ToString().All(r => !r.IsPrintableChar() || r == replacementChar))
+                            break;
+
+                        var index = random.Next(0, text.Length);
+                        if (result[index].IsPrintableChar() && result[index] != replacementChar)
+                        {
+                            result[index] = replacementChar;
+                            coverageTargetLength--;
+                        }                        
+                    }
+                    break;
             }
 
             return result.ToString();
