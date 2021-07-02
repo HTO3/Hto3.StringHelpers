@@ -637,6 +637,19 @@ namespace Hto3.StringHelpers
         }
 
         /// <summary>
+        /// Execute substring over a string.
+        /// If the string is shorter, it will return the same string.
+        /// </summary>
+        /// <param name="s">The original string</param>
+        /// <param name="len">Wished new string length</param>
+        /// <returns>The new string</returns>
+        public static string TrySubstring(this string s, int len)
+        {
+            if (len < 1 || s == null || s.Length <= len) return s;
+            return s.Substring(0, len);
+        }
+
+        /// <summary>
         /// Mask Text with a replacement char.
         /// </summary>
         /// <param name="text">Text to mask.</param>
