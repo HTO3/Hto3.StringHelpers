@@ -273,6 +273,48 @@ Center a text inside a fixed length using space characters ' '.
 "job".CenterAlignText(30) == "             job            ";
 ```
 
+### MaskText
+
+Mask text with a replacement char. 
+
+```csharp
+var text = "The cat is a good friend too.";
+var coverage = 0.5f; //50%
+var mode = MaskTextMode.Begining;
+
+//Possible modes:
+//var mode = MaskTextMode.Ending;
+//var mode = MaskTextMode.Center;
+//var mode = MaskTextMode.Intervaled;
+//var mode = MaskTextMode.Ends;
+//var mode = MaskTextMode.Random;
+
+var result = StringHelpers.MaskText(text, coverage, mode);
+
+//result by mode:
+result == "*** *** ** * ***d friend too."; //Begining
+//result == "The cat is a go** ****** ****"; //Ending
+//result == "The cat ** * **** *****d too."; //Center
+//result == "**e *a* i* a *o*d *r*e*d *o*."; //Intervaled
+//result == "*** *** is a good frie** ****"; //Ends
+//result == Th* c** i* a *oo* **i*n* t**.; //Random
+```
+
+Do not mask some chars:
+
+```csharp
+var text = "111.111.111-00";
+var coverage = 0.7f; //70%
+var mode = MaskTextMode.Intervaled;
+var replacementChar = '°';
+var skip = new[] { '.', '-' };
+
+//Act
+var result = StringHelpers.MaskText(text, coverage, mode, replacementChar, skip);
+
+result == "°°1.°°°.1°°-°0";
+```
+
 ### NormalizePathSlashes
 
 Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\\', else all '\\' will be replaced by '/'.
