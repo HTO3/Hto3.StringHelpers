@@ -637,127 +637,161 @@ namespace Hto3.StringHelpers
         }
 
         /// <summary>
-        /// Mask Text with a replacement char.
+        /// Mask text with a replacement char.
+        /// </summary>
+        /// <param name="text">Text to mask.</param>
+        /// <param name="coverage">Coverage percentage, where 0 is no coverage and 1 is full coverage.</param>
+        /// <returns></returns>
+        public static String MaskText(this String text, Single coverage)
+        {
+            return MaskText(text, coverage, MaskTextMode.Intervaled);
+        }
+
+        /// <summary>
+        /// Mask text with a replacement char.
+        /// </summary>
+        /// <param name="text">Text to mask.</param>
+        /// <param name="coverage">Coverage percentage, where 0 is no coverage and 1 is full coverage.</param>
+        /// <param name="mode">Chosse between coverage styles to prevent the text to be guessable.</param>
+        /// <returns></returns>
+        public static String MaskText(this String text, Single coverage, MaskTextMode mode)
+        {
+            return MaskText(text, coverage, mode, '*');
+        }
+
+        /// <summary>
+        /// Mask text with a replacement char.
         /// </summary>
         /// <param name="text">Text to mask.</param>
         /// <param name="coverage">Coverage percentage, where 0 is no coverage and 1 is full coverage.</param>
         /// <param name="mode">Chosse between coverage styles to prevent the text to be guessable.</param>
         /// <param name="replacementChar">Char to use as the mask.</param>
         /// <returns></returns>
-        public static String MaskText(this String text, Single coverage, MaskTextMode mode, Char replacementChar = '*')
+        public static String MaskText(this String text, Single coverage, MaskTextMode mode, Char replacementChar)
+        {
+            return MaskText(text, coverage, mode, replacementChar, null);
+        }
+
+        /// <summary>
+        /// Mask text with a replacement char.
+        /// </summary>
+        /// <param name="text">Text to mask.</param>
+        /// <param name="coverage">Coverage percentage, where 0 is no coverage and 1 is full coverage.</param>
+        /// <param name="mode">Chosse between coverage styles to prevent the text to be guessable.</param>
+        /// <param name="replacementChar">Char to use as the mask.</param>
+        /// <param name="skipChars">Do not mask the char specified by this parameter.</param>
+        /// <returns></returns>
+        public static String MaskText(this String text, Single coverage, MaskTextMode mode, Char replacementChar, Char[] skipChars)
         {
             if (coverage < 0 || coverage > 1)
                 throw new ArgumentOutOfRangeException(nameof(coverage));
-            if (String.IsNullOrEmpty(text))
+            if (String.IsNullOrEmpty(text) || coverage == 0)
                 return text;
 
-            var maskableLength = text.Count(t => t.IsPrintableChar());
-            var coverageTargetLength = (Int32)Math.Ceiling(maskableLength * coverage);
-            var result = new StringBuilder();
-            var cursor = default(Int32);
+            var maskableChar = new Func<Char, Boolean>
+            (c =>
+                c.IsPrintableChar()
+                &&
+                (skipChars == null || !skipChars.Contains(c))
+            );
+
+            const Byte MASKABLE_CHAR = 0;
+            const Byte JUMP_CHAR = 1;
+            const Byte MASKED_CHAR = 2;
+            
+            var textMap = new Byte[text.Length];
+            for (var i = 0; i < text.Length; i++)
+                textMap[i] = maskableChar(text[i]) ? MASKABLE_CHAR : JUMP_CHAR;
+            var maskableLength = textMap.Count(t => t == MASKABLE_CHAR);
+            var coverageTargetLength = (Int32)Math.Round(maskableLength * coverage);
 
             switch (mode)
             {
                 case MaskTextMode.Begining:
-                    cursor = 0;
-                    while (coverageTargetLength > 0)
-                    {
-                        var c = text[cursor++];
-                        if (c.IsPrintableChar())
+                    for (var i = 0; i < textMap.Length && coverageTargetLength > 0; i++)
+                        if (textMap[i] == MASKABLE_CHAR)
                         {
-                            result.Append(replacementChar);
+                            textMap[i] = MASKED_CHAR;
                             coverageTargetLength--;
                         }
-                        else
-                            result.Append(c);
-                    }
-                    result.Append(text.Substring(cursor));
                     break;
                 case MaskTextMode.Ending:
-                    cursor = text.Length - 1;
-                    while (coverageTargetLength > 0)
-                    {
-                        var c = text[cursor--];
-                        if (c.IsPrintableChar())
+                    for (var i = textMap.Length - 1; i >= 0 && coverageTargetLength > 0; i--)
+                        if (textMap[i] == MASKABLE_CHAR)
                         {
-                            result.Insert(0, replacementChar);
+                            textMap[i] = MASKED_CHAR;
                             coverageTargetLength--;
                         }
-                        else
-                            result.Insert(0, c);
-                    }
-                    result.Insert(0, text.Substring(0, cursor + 1));
                     break;
                 case MaskTextMode.Center:
-                    cursor = 0;
-                    var diff = maskableLength - coverageTargetLength;
-                    var countToStart = (Int32)Math.Round(diff / 2f);
-                    while (coverageTargetLength > 0)
-                    {
-                        var c = text[cursor++];
-                        if (c.IsPrintableChar())
+                    var diff_center = maskableLength - coverageTargetLength;
+                    var countToStart = (Int32)Math.Round(diff_center / 2f);
+                    for (var i = 0; i < textMap.Length && coverageTargetLength > 0; i++)
+                        if (textMap[i] == MASKABLE_CHAR && countToStart-- <= 0)
                         {
-                            if (countToStart == 0)
-                            {
-                                result.Append(replacementChar);
-                                coverageTargetLength--;
-                            }
-                            else
-                            {
-                                result.Append(c);
-                                countToStart--;
-                            }
+                            textMap[i] = MASKED_CHAR;
+                            coverageTargetLength--;
                         }
-                        else
-                            result.Append(c);
-                    }
-                    result.Append(text.Substring(cursor));
+                    break;
+                case MaskTextMode.Ends:
+                    var padding_start = (Int32)Math.Floor(coverageTargetLength / 2f);
+                    var padding_end = padding_start;
+                    if (padding_start + padding_end < coverageTargetLength)
+                        padding_start++;
+
+                    for (var i = 0; i < textMap.Length && padding_start > 0; i++)
+                        if (textMap[i] == MASKABLE_CHAR)
+                        {
+                            textMap[i] = MASKED_CHAR;
+                            padding_start--;
+                        }
+                    for (var i = textMap.Length - 1; i >= 0 && padding_end > 0; i--)
+                        if (textMap[i] == MASKABLE_CHAR)
+                        {
+                            textMap[i] = MASKED_CHAR;
+                            padding_end--;
+                        }
                     break;
                 case MaskTextMode.Intervaled:
-                    cursor = 0;
                     var interval = (Int32)Math.Round(maskableLength / (Single)coverageTargetLength);
+                    if (interval < 2)
+                        interval = 2;
                     var intervalCount = 0;
-                    result.Append(text);
 
                     while (coverageTargetLength > 0)
                     {
-                        for (var i = 0; i < result.Length; i++)
+                        for (var i = 0; i < textMap.Length; i++)
                         {
-                            if (result[i].IsPrintableChar())
+                            if (textMap[i] == MASKABLE_CHAR && ++intervalCount >= interval)
                             {
-                                if (interval <= ++intervalCount && result[i] != replacementChar)
-                                {
-                                    result[i] = replacementChar;
-                                    coverageTargetLength--;
-                                    intervalCount = 0;
+                                textMap[i] = MASKED_CHAR;
+                                coverageTargetLength--;
+                                intervalCount = 0;
 
-                                    if (coverageTargetLength == 0)
-                                        break;
-                                }
+                                if (coverageTargetLength == 0)
+                                    break;
                             }
                         }
-
-                        if (result.ToString().All(r => !r.IsPrintableChar() || r == replacementChar))
-                            break;
                     }
                     break;
                 case MaskTextMode.Random:
                     var random = new Random();
-                    result.Append(text);
                     while (coverageTargetLength > 0)
                     {
-                        if (result.ToString().All(r => !r.IsPrintableChar() || r == replacementChar))
-                            break;
-
                         var index = random.Next(0, text.Length);
-                        if (result[index].IsPrintableChar() && result[index] != replacementChar)
+                        if (textMap[index] == MASKABLE_CHAR)
                         {
-                            result[index] = replacementChar;
+                            textMap[index] = MASKED_CHAR;
                             coverageTargetLength--;
                         }                        
                     }
                     break;
             }
+
+            var result = new StringBuilder(text);
+            for (var i = 0; i < text.Length; i++)
+                if (textMap[i] == MASKED_CHAR)
+                    result[i] = replacementChar;
 
             return result.ToString();
         }

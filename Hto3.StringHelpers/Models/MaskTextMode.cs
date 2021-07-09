@@ -10,6 +10,7 @@ namespace Hto3.StringHelpers.Models
         Ending = 1,
         Center = 2,
         Intervaled = 3,
-        Random = 4
+        Ends = 4,
+        Random = 5
     }
 }
