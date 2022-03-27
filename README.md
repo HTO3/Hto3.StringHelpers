@@ -265,6 +265,16 @@ Remove accents replacing the character with the equivalent without accent.
 "jäspion".RemoveAccents() == "jaspion";
 ```
 
+### TrySubstring
+
+Try to execute substring over a string.
+Returns false if the operation is impossible, else true.
+
+```csharp
+String resultString = null;
+bool success = "abc".TrySubstring(2, out resultString);
+```
+
 ### CenterAlignText
 
 Center a text inside a fixed length using space characters ' '.

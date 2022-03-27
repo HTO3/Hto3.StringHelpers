@@ -635,20 +635,41 @@ namespace Hto3.StringHelpers
         {
             return !(Char.IsControl(c) || Char.IsWhiteSpace(c));
         }
-
         /// <summary>
-        /// Execute substring over a string.
-        /// If the string is shorter, it will return the same string.
+        /// Try to execute substring over a string.
+        /// Returns false if the operation is impossible, else true.
         /// </summary>
-        /// <param name="s">The original string</param>
-        /// <param name="len">Wished new string length</param>
-        /// <returns>The new string</returns>
-        public static string TrySubstring(this string s, int len)
+        /// <param name="value">The original string.</param>
+        /// <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
+        /// <param name="result">A string that is equivalent to the substring of length length that begins at startIndex in this instance, or System.String.Empty if startIndex is equal to the length of this instance and length is zero.</param>
+        /// <returns></returns>
+        public static Boolean TrySubstring(this String value, Int32 startIndex, out String result)
         {
-            if (len < 1 || s == null || s.Length <= len) return s;
-            return s.Substring(0, len);
+            return value.TrySubstring(startIndex, (value?.Length ?? 0) - startIndex, out result);
         }
+        /// <summary>
+        /// Try to execute substring over a string.
+        /// Returns false if the operation is impossible, else true.
+        /// </summary>
+        /// <param name="value">The original string.</param>
+        /// <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
+        /// <param name="length">The number of characters in the substring.</param>
+        /// <param name="result">A string that is equivalent to the substring of length length that begins at startIndex in this instance, or System.String.Empty if startIndex is equal to the length of this instance and length is zero.</param>
+        /// <returns></returns>
+        public static Boolean TrySubstring(this String value, Int32 startIndex, Int32 length, out String result)
+        {
+            result = null;
 
+            if (value == null)
+                return false;
+            if (startIndex < 0 || startIndex > value.Length)
+                return false;
+            if (length < 0 || startIndex + length > value.Length)
+                return false;
+
+            result = value.Substring(startIndex, length);
+            return true;
+        }
         /// <summary>
         /// Mask text with a replacement char.
         /// </summary>
