@@ -219,7 +219,7 @@ namespace Hto3.StringHelpers
         }
 
         /// <summary>
-        /// Strip all others caracters from a text lefting only numbers
+        /// Strip all others caracters from a text lefting only numbers.
         /// </summary>
         /// <param name="text">The original text</param>
         /// <returns></returns>
@@ -233,6 +233,26 @@ namespace Hto3.StringHelpers
             foreach (var c in text)
             {
                 if (Char.IsNumber(c))
+                    builder.Append(c);
+            }
+
+            return builder.ToString();
+        }
+        /// <summary>
+        /// Strip all others caracters from a text lefting only letters.
+        /// </summary>
+        /// <param name="text">The original text</param>
+        /// <returns></returns>
+        public static String LettersOnly(this String text)
+        {
+            if (String.IsNullOrEmpty(text))
+                return text;
+
+            var builder = new StringBuilder();
+
+            foreach (var c in text)
+            {
+                if (Char.IsLetter(c))
                     builder.Append(c);
             }
 

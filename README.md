@@ -118,6 +118,14 @@ Strip all others caracters from a text lefting only numbers.
 "df89e#dKf".NumbersOnly() == "89";
 ```
 
+### LettersOnly
+
+Strip all others caracters from a text lefting only letters.
+
+```csharp
+"df89é#dKf".LettersOnly() == "dfédKf";
+```
+
 ### ExceptNumbers
 
 Strip all others caracters from a text lefting only non-numbers.
