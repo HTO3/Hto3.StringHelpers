@@ -691,6 +691,18 @@ namespace Hto3.StringHelpers
             return true;
         }
         /// <summary>
+        /// Remove extra space between words.
+        /// </summary>
+        /// <param name="value">The text that contains spaces to remove.</param>
+        /// <returns></returns>
+        public static String TrimExtraSpaces(this String value)
+        {
+            if (value == null)
+                return null;
+
+            return Regex.Replace(value, @"\s+", " ").Trim();
+        }
+        /// <summary>
         /// Mask text with a replacement char.
         /// </summary>
         /// <param name="text">Text to mask.</param>

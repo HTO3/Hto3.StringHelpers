@@ -342,3 +342,11 @@ Normalize the slashes in a path. If the application is running on Windows, all '
 //on Windows
 "/var/lib/file.txt".NormalizePathSlashes() == "\\var\\lib\\file.txt";
 ```
+
+### TrimExtraSpaces
+
+Remove extra space between words.
+
+```csharp
+"abc     abc".TrimExtraSpaces() == "abc abc";
+```
