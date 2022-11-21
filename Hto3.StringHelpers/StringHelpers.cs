@@ -111,6 +111,26 @@ namespace Hto3.StringHelpers
             return text;
         }
         /// <summary>
+        /// Calculate the content size of a base64 string. Return size in Bytes.
+        /// </summary>
+        /// <param name="base64String">The base64 string.</param>
+        /// <returns></returns>
+        public static Int64 CalcBase64SizeBytes(this String base64String)
+        {
+            Int64 result = 0;
+            if (!String.IsNullOrEmpty(base64String))
+            {
+                Int32 padding = 0;
+                if (base64String.EndsWith("=="))
+                    padding = 2;
+                else if (base64String.EndsWith("="))
+                    padding = 1;
+
+                result = (Int64)(Math.Ceiling(base64String.Length / 4m) * 3) - padding;
+            }
+            return result;
+        }
+        /// <summary>
         /// If the text is equal to a specified value, then return null.
         /// </summary>
         /// <param name="text"></param>

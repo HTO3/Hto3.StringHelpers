@@ -350,3 +350,11 @@ Remove extra space between words.
 ```csharp
 "abc     abc".TrimExtraSpaces() == "abc abc";
 ```
+
+### CalcBase64SizeBytes
+
+Calculate the content size of a base64 string. Return size in Bytes.
+
+```csharp
+"AA==".CalcBase64SizeBytes() == 1;
+```
