@@ -881,6 +881,52 @@ namespace Hto3.StringHelpers
 
             return result.ToString();
         }
+        /// <summary>
+        /// Check if the text contains any of the provided words.
+        /// </summary>
+        /// <param name="text">The text to verify.</param>
+        /// <param name="words">The array of words.</param>
+        /// <param name="stringComparison">String comparison mode.</param>
+        /// <returns></returns>
+        public static Boolean ContainsAnyOfTheseWords(this String text, String[] words, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            if (String.IsNullOrEmpty(text))
+                return false;
+            if (words == null || words.Length == 0)
+                return false;
+
+            var allTextWords = text.Split(new Char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Distinct();
+
+            var targetWordsDistinct = words
+                .Distinct()
+                .ToArray();
+
+            return allTextWords.Any(tw => targetWordsDistinct.Any(w => String.Compare(tw, w, stringComparison) == 0));
+        }
+        /// <summary>
+        /// Check if the text contains all of the provided words.
+        /// </summary>
+        /// <param name="text">The text to verify.</param>
+        /// <param name="words">The array of words.</param>
+        /// <param name="stringComparison">String comparison mode.</param>
+        /// <returns></returns>
+        public static Boolean ContainsAllOfTheseWords(this String text, String[] words, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            if (String.IsNullOrEmpty(text))
+                return false;
+            if (words == null || words.Length == 0)
+                return false;
+
+            var allTextWords = text.Split(new Char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Distinct();
+
+            var targetWordsDistinct = words
+                .Distinct()
+                .ToArray();
+
+            return allTextWords.Count(tw => targetWordsDistinct.Any(w => String.Compare(tw, w, stringComparison) == 0)) == words.Length;
+        }
 #if !NETFRAMEWORK
         /// <summary>
         /// Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\', else all '\' will be replaced by '/'.
