@@ -358,3 +358,47 @@ Calculate the content size of a base64 string. Return size in Bytes.
 ```csharp
 "AA==".CalcBase64SizeBytes() == 1;
 ```
+
+### ContainsAnyOfTheseWords
+
+Check if the text contains any of the provided words.
+
+```csharp
+var text = @"Historically, the world of data and the world of objects " +
+           @"have not been well integrated. Programmers work in C# or Visual Basic " +
+           @"and also in SQL or XQuery. On the one side are concepts such as classes, " +
+           @"objects, fields, inheritance, and .NET APIs. On the other side " +
+           @"are tables, columns, rows, nodes, and separate languages for dealing with " +
+           @"them. Data types often require translation between the two worlds; there are " +
+           @"different standard functions. Because the object world has no notion of query, a " +
+           @"query can only be represented as a string without compile-time type checking or " +
+           @"IntelliSense support in the IDE. Transferring data from SQL tables or XML trees to " +
+           @"objects in memory is often tedious and error-prone.";
+
+var words = new[] { "memory", "jeopardize" };
+
+//The word "memory" is in the text
+text.ContainsAnyOfTheseWords(words) == true;
+```
+
+### ContainsAllOfTheseWords
+
+Check if the text contains all of the provided words.
+
+```csharp
+var text = @"Historically, the world of data and the world of objects " +
+           @"have not been well integrated. Programmers work in C# or Visual Basic " +
+           @"and also in SQL or XQuery. On the one side are concepts such as classes, " +
+           @"objects, fields, inheritance, and .NET APIs. On the other side " +
+           @"are tables, columns, rows, nodes, and separate languages for dealing with " +
+           @"them. Data types often require translation between the two worlds; there are " +
+           @"different standard functions. Because the object world has no notion of query, a " +
+           @"query can only be represented as a string without compile-time type checking or " +
+           @"IntelliSense support in the IDE. Transferring data from SQL tables or XML trees to " +
+           @"objects in memory is often tedious and error-prone.";
+
+var words = new[] { "object", "without" };
+
+//The words "object" and "without" are in the text
+text.ContainsAllOfTheseWords(words) == true;
+```

@@ -1,5 +1,6 @@
 using Hto3.StringHelpers.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,6 +13,16 @@ namespace Hto3.StringHelpers
     public static class StringHelpers
     {
         private static readonly Regex _notAlphaNumericRegex = new Regex("[^a-zA-Z0-9]", RegexOptions.Compiled);
+        private static readonly Dictionary<StringComparison, Func<StringComparer>> _stringComparisonMap = new Dictionary<StringComparison, Func<StringComparer>>
+        {
+            { StringComparison.CurrentCulture, () => StringComparer.CurrentCulture },
+            { StringComparison.CurrentCultureIgnoreCase, () => StringComparer.CurrentCultureIgnoreCase },
+            { StringComparison.InvariantCulture, () => StringComparer.InvariantCulture },
+            { StringComparison.InvariantCultureIgnoreCase, () => StringComparer.InvariantCultureIgnoreCase },
+            { StringComparison.Ordinal, () => StringComparer.Ordinal },
+            { StringComparison.OrdinalIgnoreCase, () => StringComparer.OrdinalIgnoreCase }
+        };
+
         /// <summary>
         /// Remove a specified amout of characters at the begining of string.
         /// </summary>
@@ -896,10 +907,10 @@ namespace Hto3.StringHelpers
                 return false;
 
             var allTextWords = text.Split(new Char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Distinct();
+                .Distinct(_stringComparisonMap[stringComparison]());
 
             var targetWordsDistinct = words
-                .Distinct()
+                .Distinct(_stringComparisonMap[stringComparison]())
                 .ToArray();
 
             return allTextWords.Any(tw => targetWordsDistinct.Any(w => String.Compare(tw, w, stringComparison) == 0));
@@ -919,10 +930,10 @@ namespace Hto3.StringHelpers
                 return false;
 
             var allTextWords = text.Split(new Char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Distinct();
+                .Distinct(_stringComparisonMap[stringComparison]());
 
             var targetWordsDistinct = words
-                .Distinct()
+                .Distinct(_stringComparisonMap[stringComparison]())
                 .ToArray();
 
             return allTextWords.Count(tw => targetWordsDistinct.Any(w => String.Compare(tw, w, stringComparison) == 0)) == words.Length;
