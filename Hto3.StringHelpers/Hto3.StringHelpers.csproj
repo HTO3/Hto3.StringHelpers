@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net47;net48;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net47;net48;net6.0;net7.0;net8.0</TargetFrameworks>
     <Authors>HTO3</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
@@ -13,11 +13,13 @@
     <Description>A set of extension methods that can be used to facilitate the manipulation of strings solving common dev problems.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.1.7.0</AssemblyVersion>
-    <FileVersion>1.1.7.0</FileVersion>
-    <Version>1.1.7</Version>
+    <AssemblyVersion>1.1.8.0</AssemblyVersion>
+    <FileVersion>1.1.8.0</FileVersion>
+    <Version>1.1.8</Version>
     <PackageIcon>nuget-logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Title>Hto3.StringHelpers</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -27,7 +29,11 @@
   <ItemGroup>
     <None Include="..\nuget-logo.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
