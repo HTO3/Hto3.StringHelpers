@@ -12,11 +12,11 @@ Hto3.StringHelpers
 
 Features
 --------
-A set of extension methods that can be used to manipulate strings solving common dev problems.
+A set of extension methods that can be used to manipulate strings and solve common development problems.
 
 ### RemoveCharactersAtBegining
 
-Remove a specified amout of characters at the begining of string.
+Remove a specified amount of characters from the beginning of a string.
 
 ```csharp
 "Apple".RemoveCharactersAtBegining(1) == "pple";
@@ -24,7 +24,7 @@ Remove a specified amout of characters at the begining of string.
 
 ### RemoveCharactersAtEnd
 
-Remove a specified amout of characters at the end of string.
+Remove a specified amount of characters from the end of a string.
 
 ```csharp
 "Apple".RemoveCharactersAtEnd(1) == "Appl";
@@ -32,10 +32,10 @@ Remove a specified amout of characters at the end of string.
 
 ### RemoveSpaces
 
-Remove all spaces ' '.
+Remove all space characters (' ').
 
 ```csharp
-"Five steps to complish".RemoveSpaces() == "Fivestepstocomplish";
+"Five steps to accomplish".RemoveSpaces() == "Fivestepstoaccomplish";
 ```
 
 ### RemoveLineBreaks
@@ -48,7 +48,7 @@ Remove all line breaks.
 
 ### PrependMissing
 
-If the text does not start with a especified text, then this specified text will be added to the string.
+If the text does not start with the specified value, that value will be added to the start of the string.
 
 ```csharp
 @":\Program Files (x86)\Java".PrependMissing("C") == @"C:\Program Files (x86)\Java";
@@ -56,7 +56,7 @@ If the text does not start with a especified text, then this specified text will
 
 ### AppendMissing
 
-If the text does not end with a especified text, then this specified text will be added to the string.
+If the text does not end with the specified value, that value will be added to the end of the string.
 
 ```csharp
 @"C:\Program Files (x86)\Java".AppendMissing("\\") == @"C:\Program Files (x86)\Java\";
@@ -64,7 +64,7 @@ If the text does not end with a especified text, then this specified text will b
 
 ### NullIf
 
-If the text is equal to a specified value, then return null.
+If the text is equal to a specified value, returns null.
 
 ```csharp
 "0".NullIf("0") == null;
@@ -72,7 +72,7 @@ If the text is equal to a specified value, then return null.
 
 ### Coalesce
 
-Return the first non-null value.
+Returns the first non-null value.
 
 ```csharp
 Helpers.Coalesce(null, null, "123", "abc") == "123";
@@ -80,7 +80,7 @@ Helpers.Coalesce(null, null, "123", "abc") == "123";
 
 ### RandomString
 
-Generate a ramdom string containing letters and numbers.
+Generate a random string containing letters and numbers.
 
 ```csharp
 Helpers.RandomString(8) == "a84583fc";
@@ -88,7 +88,7 @@ Helpers.RandomString(8) == "a84583fc";
 
 ### IsAlphanumeric
 
-Verify if a text is alpha numeric.
+Verify whether a text is alphanumeric.
 
 ```csharp
 "azAZ09".IsAlphanumeric() == true;
@@ -96,7 +96,7 @@ Verify if a text is alpha numeric.
 
 ### ToAlphanumeric
 
-Converts the specified text to an alpha-numeric string by removing all non-alpha-numeric characters.
+Converts the specified text to an alphanumeric string by removing all non-alphanumeric characters.
 
 ```csharp
 "[a-z|A-Z|0-9]".ToAlphanumeric() == "azAZ09";
@@ -104,7 +104,7 @@ Converts the specified text to an alpha-numeric string by removing all non-alpha
 
 ### ToCsvSafe
 
-Makes a string safe to to be used in a CSV file by including double quotes when needed.
+Makes a string safe to be used in a CSV file by including double quotes when needed.
 
 ```csharp
 " Cave rats,\r\ngiant cats!".ToCsvSafe() == "\" Cave rats,\r\ngiant cats!\"";
@@ -112,7 +112,7 @@ Makes a string safe to to be used in a CSV file by including double quotes when 
 
 ### NumbersOnly
 
-Strip all others caracters from a text lefting only numbers.
+Strip all other characters from a text, leaving only numbers.
 
 ```csharp
 "df89e#dKf".NumbersOnly() == "89";
@@ -120,7 +120,7 @@ Strip all others caracters from a text lefting only numbers.
 
 ### LettersOnly
 
-Strip all others caracters from a text lefting only letters.
+Strip all other characters from a text, leaving only letters.
 
 ```csharp
 "df89é#dKf".LettersOnly() == "dfédKf";
@@ -128,7 +128,7 @@ Strip all others caracters from a text lefting only letters.
 
 ### ExceptNumbers
 
-Strip all others caracters from a text lefting only non-numbers.
+Strip all other characters from a text, leaving only non-numeric characters.
 
 ```csharp
 "59385gg#451".ExceptNumbers() == "gg#";
@@ -136,7 +136,7 @@ Strip all others caracters from a text lefting only non-numbers.
 
 ### Right
 
-Extract some characters from right to left.
+Extract characters from the right.
 
 ```csharp
 "Apple".Right(3) == "ple";
@@ -144,7 +144,7 @@ Extract some characters from right to left.
 
 ### Left
 
-Extract some characters from left to right.
+Extract characters from the left.
 
 ```csharp
 "Apple".Left(3) == "App";
@@ -152,7 +152,7 @@ Extract some characters from left to right.
 
 ### Reverse
 
-Reverse the characters sequence.
+Reverse the character sequence.
 
 ```csharp
 "Apple".Reverse() == "elppA";
@@ -160,7 +160,7 @@ Reverse the characters sequence.
 
 ### ReplaceIgnoringCase
 
-Replace a text with another one ignoring case.
+Replace text with another value, ignoring case.
 
 ```csharp
 "The ReCiPe of madness".ReplaceIgnoringCase("recipe", "master") == "The master of madness";
@@ -168,7 +168,7 @@ Replace a text with another one ignoring case.
 
 ### ReplaceWholeWord
 
-Replace whole word.
+Replace a whole word.
 
 ```csharp
 "So far so good".ReplaceWholeWord("far", "long") == "So long so good";
@@ -176,7 +176,7 @@ Replace whole word.
 
 ### ReplaceFirstOccurrence
 
-Returns a new string in which only the first occurrence of a specified string in the current instance are replaced with another specified string.
+Returns a new string in which only the first occurrence of a specified string in the current instance is replaced with another specified string.
 
 ```csharp
 "Car car car car".ReplaceFirstOccurrence("car", "bus") == "Car bus car car";
@@ -184,7 +184,7 @@ Returns a new string in which only the first occurrence of a specified string in
 
 ### TryGetFirstName
 
-Tries to get the first name of a full name.
+Try to get the first name from a full name.
 
 ```csharp
 String test = null;
@@ -194,7 +194,7 @@ Assert.AreEqual(test, "John");
 
 ### TryGetLastName
 
-Tries to get the last name of a full name.
+Try to get the last name from a full name.
 
 ```csharp
 String test = null;
@@ -204,7 +204,7 @@ Assert.AreEqual(test, "Doe");
 
 ### FormatCPF
 
-Format a brazilian CPF.
+Format a Brazilian CPF.
 
 ```csharp
 "11111111111".FormatCPF() == "111.111.111-11";
@@ -212,7 +212,7 @@ Format a brazilian CPF.
 
 ### FormatCNPJ
 
-Format a brazilian CNPJ.
+Format a Brazilian CNPJ.
 
 ```csharp
 "11111111111111".FormatCNPJ() == "11.111.111/1111-11";
@@ -220,7 +220,7 @@ Format a brazilian CNPJ.
 
 ### FormatCEP
 
-Format a brazilian zip code.
+Format a Brazilian ZIP code (CEP).
 
 ```csharp
 "11111111".FormatCEP() == "11111-111";
@@ -228,7 +228,7 @@ Format a brazilian zip code.
 
 ### IsNumber
 
-Verify if a text is a number.
+Verify whether a text represents a number.
 
 ```csharp
 "1111".IsNumber() == true;
@@ -252,7 +252,7 @@ Remove all non-ANSI characters from a text.
 
 ### ReplaceNonASCIICharactersWith
 
-Replace all non-ASCII characters with a character.
+Replace all non-ASCII characters with a specified character.
 
 ```csharp
 "jäspion-".ReplaceNonASCIICharactersWith('?') == "j?spion-";
@@ -260,7 +260,7 @@ Replace all non-ASCII characters with a character.
 
 ### ReplaceNonANSICharactersWith
 
-Replace all non-ANSI characters with a character.
+Replace all non-ANSI characters with a specified character.
 
 ```csharp
 "jäspion-ﮝ".ReplaceNonANSICharactersWith('?') == "jäspion-?";
@@ -268,7 +268,7 @@ Replace all non-ANSI characters with a character.
 
 ### RemoveAccents
 
-Remove accents replacing the character with the equivalent without accent.
+Remove accents by replacing characters with their unaccented equivalents.
 
 ```csharp
 "jäspion".RemoveAccents() == "jaspion";
@@ -276,8 +276,7 @@ Remove accents replacing the character with the equivalent without accent.
 
 ### TrySubstring
 
-Try to execute substring over a string.
-Returns false if the operation is impossible, else true.
+Attempt to perform a substring operation on a string. Returns false if the operation is invalid; otherwise, returns true.
 
 ```csharp
 String resultString = null;
@@ -286,7 +285,7 @@ bool success = "abc".TrySubstring(2, out resultString);
 
 ### CenterAlignText
 
-Center a text inside a fixed length using space characters ' '.
+Center-align text inside a fixed length using space characters.
 
 ```csharp
 "job".CenterAlignText(30) == "             job            ";
@@ -294,41 +293,41 @@ Center a text inside a fixed length using space characters ' '.
 
 ### MaskText
 
-Mask text with a replacement char. 
+Mask text using a replacement character.
 
 ```csharp
 var text = "The cat is a good friend too.";
-var coverage = 0.5f; //50%
+var coverage = 0.5f; // 50%
 var mode = MaskTextMode.Begining;
 
-//Possible modes:
-//var mode = MaskTextMode.Ending;
-//var mode = MaskTextMode.Center;
-//var mode = MaskTextMode.Intervaled;
-//var mode = MaskTextMode.Ends;
-//var mode = MaskTextMode.Random;
+// Possible modes:
+// var mode = MaskTextMode.Ending;
+// var mode = MaskTextMode.Center;
+// var mode = MaskTextMode.Intervaled;
+// var mode = MaskTextMode.Ends;
+// var mode = MaskTextMode.Random;
 
 var result = StringHelpers.MaskText(text, coverage, mode);
 
-//result by mode:
-result == "*** *** ** * ***d friend too."; //Begining
-//result == "The cat is a go** ****** ****"; //Ending
-//result == "The cat ** * **** *****d too."; //Center
-//result == "**e *a* i* a *o*d *r*e*d *o*."; //Intervaled
-//result == "*** *** is a good frie** ****"; //Ends
-//result == Th* c** i* a *oo* **i*n* t**.; //Random
+// Examples by mode:
+result == "*** *** ** * ***d friend too."; // Begining
+// result == "The cat is a go** ****** ****"; // Ending
+// result == "The cat ** * **** *****d too."; // Center
+// result == "**e *a* i* a *o*d *r*e*d *o*."; // Intervaled
+// result == "*** *** is a good frie** ****"; // Ends
+// result == "Th* c** i* a *oo* **i*n* t**."; // Random
 ```
 
-Do not mask some chars:
+Do not mask some characters:
 
 ```csharp
 var text = "111.111.111-00";
-var coverage = 0.7f; //70%
+var coverage = 0.7f; // 70%
 var mode = MaskTextMode.Intervaled;
 var replacementChar = '°';
 var skip = new[] { '.', '-' };
 
-//Act
+// Act
 var result = StringHelpers.MaskText(text, coverage, mode, replacementChar, skip);
 
 result == "°°1.°°°.1°°-°0";
@@ -336,16 +335,16 @@ result == "°°1.°°°.1°°-°0";
 
 ### NormalizePathSlashes
 
-Normalize the slashes in a path. If the application is running on Windows, all '/' will be replaced by '\\', else all '\\' will be replaced by '/'.
+Normalize the slashes in a path. If running on Windows, all '/' will be replaced by '\'; otherwise all '\' will be replaced by '/'.
 
 ```csharp
-//on Windows
+// on Windows
 "/var/lib/file.txt".NormalizePathSlashes() == "\\var\\lib\\file.txt";
 ```
 
 ### TrimExtraSpaces
 
-Remove extra space between words.
+Remove extra spaces between words.
 
 ```csharp
 "abc     abc".TrimExtraSpaces() == "abc abc";
@@ -353,7 +352,7 @@ Remove extra space between words.
 
 ### CalcBase64SizeBytes
 
-Calculate the content size of a base64 string. Return size in Bytes.
+Calculate the content size of a base64 string and return the size in bytes.
 
 ```csharp
 "AA==".CalcBase64SizeBytes() == 1;
@@ -361,7 +360,7 @@ Calculate the content size of a base64 string. Return size in Bytes.
 
 ### ContainsAnyOfTheseWords
 
-Check if the text contains any of the provided words.
+Check whether the text contains any of the provided words.
 
 ```csharp
 var text = @"Historically, the world of data and the world of objects " +
@@ -377,13 +376,13 @@ var text = @"Historically, the world of data and the world of objects " +
 
 var words = new[] { "memory", "jeopardize" };
 
-//The word "memory" is in the text
+// The word "memory" is in the text
 text.ContainsAnyOfTheseWords(words) == true;
 ```
 
 ### ContainsAllOfTheseWords
 
-Check if the text contains all of the provided words.
+Check whether the text contains all of the provided words.
 
 ```csharp
 var text = @"Historically, the world of data and the world of objects " +
@@ -399,6 +398,5 @@ var text = @"Historically, the world of data and the world of objects " +
 
 var words = new[] { "object", "without" };
 
-//The words "object" and "without" are in the text
+// The words "object" and "without" are in the text
 text.ContainsAllOfTheseWords(words) == true;
-```
