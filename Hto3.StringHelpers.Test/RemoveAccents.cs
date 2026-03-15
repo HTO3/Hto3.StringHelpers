@@ -13,10 +13,10 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.RemoveAccents("jäspion("), "jaspion(");
-            Assert.AreEqual(StringHelpers.RemoveAccents("jáspìôn"), "jaspion");
-            Assert.AreEqual(StringHelpers.RemoveAccents(""), "");
-            Assert.AreEqual(StringHelpers.RemoveAccents(null), null);
+            Assert.AreEqual("jaspion(", StringHelpers.RemoveAccents("jäspion("));
+            Assert.AreEqual("jaspion", StringHelpers.RemoveAccents("jáspìôn"));
+            Assert.AreEqual("", StringHelpers.RemoveAccents(""));
+            Assert.AreEqual(null, StringHelpers.RemoveAccents(null));
         }
     }
 }

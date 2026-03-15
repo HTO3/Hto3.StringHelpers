@@ -10,9 +10,9 @@ namespace Hto3.StringHelpers.Test
         public void NormalUse()
         {
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
-                Assert.AreEqual("/var/lib/file.txt".NormalizePathSlashes(), "\\var\\lib\\file.txt");
+                Assert.AreEqual("\\var\\lib\\file.txt", "/var/lib/file.txt".NormalizePathSlashes());
             else
-                Assert.AreEqual("/var/lib/file.txt".NormalizePathSlashes(), "/var/lib/file.txt");
+                Assert.AreEqual("/var/lib/file.txt", "/var/lib/file.txt".NormalizePathSlashes());
         }
 
         [TestMethod]

@@ -13,19 +13,16 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.Right("Apple", 3, true), "...ple");
-            Assert.AreEqual(StringHelpers.Right("Apple", 5, true), "Apple");
-            Assert.AreEqual(StringHelpers.Right("Apple", 0, true), "...");
-            Assert.AreEqual(StringHelpers.Right("Apple", 0, false), "");
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
-            {
-                Assert.AreEqual(StringHelpers.Right("Apple", -5, true), "Apple");
-            });
-            Assert.AreEqual(StringHelpers.Right("Apple", 6, true), "Apple");
-            Assert.AreEqual(StringHelpers.Right("Apple", 3, false), "ple");
-            Assert.AreEqual(StringHelpers.Right("Apple", 5, false), "Apple");
-            Assert.AreEqual(StringHelpers.Right("", 3, false), "");
-            Assert.AreEqual(StringHelpers.Right(null, 3, false), null);
+            Assert.AreEqual("...ple", StringHelpers.Right("Apple", 3, true));
+            Assert.AreEqual("Apple", StringHelpers.Right("Apple", 5, true));
+            Assert.AreEqual("...", StringHelpers.Right("Apple", 0, true));
+            Assert.AreEqual("", StringHelpers.Right("Apple", 0, false));
+            Assert.Throws<ArgumentOutOfRangeException>(() => StringHelpers.Right("Apple", -5, true));
+            Assert.AreEqual("Apple", StringHelpers.Right("Apple", 6, true));
+            Assert.AreEqual("ple", StringHelpers.Right("Apple", 3, false));
+            Assert.AreEqual("Apple", StringHelpers.Right("Apple", 5, false));
+            Assert.AreEqual("", StringHelpers.Right("", 3, false));
+            Assert.AreEqual(null, StringHelpers.Right(null, 3, false));
         }
     }
 }

@@ -14,28 +14,28 @@ namespace Hto3.StringHelpers.Test
         public void NormalUse()
         {
             String test1 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName("John Doe", out test1), true);
-            Assert.AreEqual(test1, "John");
+            Assert.AreEqual(true, StringHelpers.TryGetFirstName("John Doe", out test1));
+            Assert.AreEqual("John", test1);
 
             String test2 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName("John", out test2), false);
-            Assert.AreEqual(test2, null);
+            Assert.AreEqual(false, StringHelpers.TryGetFirstName("John", out test2));
+            Assert.AreEqual(null, test2);
 
             String test3 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName("JohnDoe", out test3), false);
-            Assert.AreEqual(test3, null);
+            Assert.AreEqual(false, StringHelpers.TryGetFirstName("JohnDoe", out test3));
+            Assert.AreEqual(null, test3);
 
             String test4 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName("John Doe Master", out test4), true);
-            Assert.AreEqual(test4, "John");
+            Assert.AreEqual(true, StringHelpers.TryGetFirstName("John Doe Master", out test4));
+            Assert.AreEqual("John", test4);
 
             String test5 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName(null, out test5), false);
-            Assert.AreEqual(test5, null);
+            Assert.AreEqual(false, StringHelpers.TryGetFirstName(null, out test5));
+            Assert.AreEqual(null, test5);
 
             String test6 = null;
-            Assert.AreEqual(StringHelpers.TryGetFirstName("", out test6), false);
-            Assert.AreEqual(test6, null);
+            Assert.AreEqual(false, StringHelpers.TryGetFirstName("", out test6));
+            Assert.AreEqual(null, test6);
         }
     }
 }

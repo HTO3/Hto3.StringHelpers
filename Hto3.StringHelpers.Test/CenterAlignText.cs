@@ -13,15 +13,15 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.CenterAlignText("jos", 30), "             jos            ");
-            Assert.AreEqual(StringHelpers.CenterAlignText("4jos", 30), "             4jos             ");
-            Assert.AreEqual(StringHelpers.CenterAlignText("4jos", 2), "4j");
-            Assert.AreEqual(StringHelpers.CenterAlignText(null, 2), "  ");
-            Assert.AreEqual(StringHelpers.CenterAlignText("", 2), "  ");
-            Assert.AreEqual(StringHelpers.CenterAlignText("a", 0), "");
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+            Assert.AreEqual("             jos            ", StringHelpers.CenterAlignText("jos", 30));
+            Assert.AreEqual("             4jos             ", StringHelpers.CenterAlignText("4jos", 30));
+            Assert.AreEqual("4j", StringHelpers.CenterAlignText("4jos", 2));
+            Assert.AreEqual("  ", StringHelpers.CenterAlignText(null, 2));
+            Assert.AreEqual("  ", StringHelpers.CenterAlignText("", 2));
+            Assert.AreEqual("", StringHelpers.CenterAlignText("a", 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
-                Assert.AreEqual(StringHelpers.CenterAlignText("", -2), null);
+                Assert.AreEqual(null, StringHelpers.CenterAlignText("", -2));
             });
         }
     }

@@ -13,17 +13,11 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("O ônibus já chegou", "Ônibus", "ubber"), "O ubber já chegou");
-            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("D5\r\n\t4¨8d(f&$Eedu", "$e", "_"), "D5\r\n\t4¨8d(f&_edu");
-            Assert.AreEqual(StringHelpers.ReplaceIgnoringCase(null, "e", "_"), null);
-            Assert.ThrowsException<ArgumentNullException>(() =>
-            {
-                Assert.AreEqual(StringHelpers.ReplaceIgnoringCase(null, null, "_"), null);
-            });
-            Assert.ThrowsException<ArgumentNullException>(() =>
-            {
-                Assert.AreEqual(StringHelpers.ReplaceIgnoringCase("sdfasgJKker", "", null), null);
-            });
+            Assert.AreEqual("O ubber já chegou", StringHelpers.ReplaceIgnoringCase("O ônibus já chegou", "Ônibus", "ubber"));
+            Assert.AreEqual("D5\r\n\t4¨8d(f&_edu", StringHelpers.ReplaceIgnoringCase("D5\r\n\t4¨8d(f&$Eedu", "$e", "_"));
+            Assert.AreEqual(null, StringHelpers.ReplaceIgnoringCase(null, "e", "_"));
+            Assert.Throws<ArgumentNullException>(() => StringHelpers.ReplaceIgnoringCase(null, null, "_"));
+            Assert.Throws<ArgumentNullException>(() => StringHelpers.ReplaceIgnoringCase("sdfasgJKker", "", null));
         }
     }
 }

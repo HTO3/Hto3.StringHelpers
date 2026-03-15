@@ -13,13 +13,13 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.IsNumber("1111", false), true);
-            Assert.AreEqual(StringHelpers.IsNumber("1111,87", false), true);
-            Assert.AreEqual(StringHelpers.IsNumber("1111,87", true), false);
-            Assert.AreEqual(StringHelpers.IsNumber("1rew1,87", false), false);
-            Assert.AreEqual(StringHelpers.IsNumber("1rew187", true), false);
-            Assert.AreEqual(StringHelpers.IsNumber("", false), false);
-            Assert.AreEqual(StringHelpers.IsNumber(null, false), false);
+            Assert.AreEqual(true, StringHelpers.IsNumber("1111", false));
+            Assert.AreEqual(true, StringHelpers.IsNumber("1111,87", false));
+            Assert.AreEqual(false, StringHelpers.IsNumber("1111,87", true));
+            Assert.AreEqual(false, StringHelpers.IsNumber("1rew1,87", false));
+            Assert.AreEqual(false, StringHelpers.IsNumber("1rew187", true));    
+            Assert.AreEqual(false, StringHelpers.IsNumber("", false));
+            Assert.AreEqual(false, StringHelpers.IsNumber(null, false));
         }
     }
 }

@@ -13,11 +13,11 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.LettersOnly("df89é#dKf"), "dfédKf");
-            Assert.AreEqual(StringHelpers.LettersOnly("dfklKidue"), "dfklKidue");
-            Assert.AreEqual(StringHelpers.LettersOnly(""), "");
-            Assert.AreEqual(StringHelpers.LettersOnly("0025478874"), "");
-            Assert.AreEqual(StringHelpers.LettersOnly(null), null);
+            Assert.AreEqual("dfédKf", StringHelpers.LettersOnly("df89é#dKf"));
+            Assert.AreEqual("dfklKidue", StringHelpers.LettersOnly("dfklKidue"));
+            Assert.AreEqual("", StringHelpers.LettersOnly(""));
+            Assert.AreEqual("", StringHelpers.LettersOnly("0025478874"));
+            Assert.AreEqual(null, StringHelpers.LettersOnly(null));
         }
     }
 }

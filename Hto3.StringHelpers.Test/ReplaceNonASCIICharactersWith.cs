@@ -13,7 +13,7 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual("jäspion-".ReplaceNonASCIICharactersWith('?'), "j?spion-");
+            Assert.AreEqual("j?spion-", "jäspion-".ReplaceNonASCIICharactersWith('?'));
         }
 
         [TestMethod]

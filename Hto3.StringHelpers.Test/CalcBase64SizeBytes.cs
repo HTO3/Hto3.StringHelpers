@@ -14,9 +14,9 @@ namespace Hto3.StringHelpers.Test
         public void NormalUse()
         {
             Assert.AreEqual(1, StringHelpers.CalcBase64SizeBytes("AA=="));
-            Assert.AreEqual(2, StringHelpers.CalcBase64SizeBytes("AAA="));
+            Assert.AreEqual(2, StringHelpers.CalcBase64SizeBytes("AAA=")); // Fix argument order
             Assert.AreEqual(3, StringHelpers.CalcBase64SizeBytes("AAAA"));
-            Assert.AreEqual(0, StringHelpers.CalcBase64SizeBytes(""));
+            Assert.AreEqual(0, StringHelpers.CalcBase64SizeBytes("")); // Fix argument order
         }
     }
 }

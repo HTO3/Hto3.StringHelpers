@@ -13,12 +13,12 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.FormatCPF("11111111111"), "111.111.111-11");
-            Assert.AreEqual(StringHelpers.FormatCPF("111111111ab"), null);
-            Assert.AreEqual(StringHelpers.FormatCPF("11111"), null);
-            Assert.AreEqual(StringHelpers.FormatCPF("111.111.111-11"), "111.111.111-11");
-            Assert.AreEqual(StringHelpers.FormatCPF(""), null);
-            Assert.AreEqual(StringHelpers.FormatCEP(null), null);
+            Assert.AreEqual("111.111.111-11", StringHelpers.FormatCPF("11111111111"));
+            Assert.AreEqual(null, StringHelpers.FormatCPF("111111111ab"));
+            Assert.AreEqual(null, StringHelpers.FormatCPF("11111"));
+            Assert.AreEqual("111.111.111-11", StringHelpers.FormatCPF("111.111.111-11"));
+            Assert.AreEqual(null, StringHelpers.FormatCPF(""));
+            Assert.AreEqual(null, StringHelpers.FormatCEP(null));
         }
     }
 }

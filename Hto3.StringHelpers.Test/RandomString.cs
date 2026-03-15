@@ -15,17 +15,17 @@ namespace Hto3.StringHelpers.Test
         {
             var randomString1 = StringHelpers.RandomString(6);
             Assert.IsNotNull(randomString1);
-            Assert.AreEqual(randomString1.Length, 6);
+            Assert.AreEqual(6, randomString1.Length);
 
             var randomString2 = StringHelpers.RandomString(0);
             Assert.IsNotNull(randomString2);
-            Assert.AreEqual(randomString2.Length, 0);
+            Assert.AreEqual(0, randomString2.Length);
 
             var randomString3 = StringHelpers.RandomString(40);
             Assert.IsNotNull(randomString3);
-            Assert.AreEqual(randomString3.Length, 40);
+            Assert.AreEqual(40, randomString3.Length);
 
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
                 StringHelpers.RandomString(-10);
             });

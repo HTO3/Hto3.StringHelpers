@@ -13,16 +13,15 @@ namespace Hto3.StringHelpers.Test
         [TestMethod]
         public void NormalUse()
         {
-            Assert.AreEqual(StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", "\\"), @"C:\Program Files (x86)\Java\");
-            Assert.AreEqual(StringHelpers.AppendMissing("", "-"), "-");
-            Assert.AreEqual(StringHelpers.AppendMissing(null, "n"), "n");
+            Assert.AreEqual(@"C:\Program Files (x86)\Java\", StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", "\\"));
+            Assert.AreEqual("-", StringHelpers.AppendMissing("", "-"));
+            Assert.AreEqual("n", StringHelpers.AppendMissing(null, "n"));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void Without_Should_End_With()
         {
-            StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", null);
+            Assert.Throws<ArgumentException>(() => StringHelpers.AppendMissing(@"C:\Program Files (x86)\Java", null));
         }
     }
 }
